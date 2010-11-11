@@ -1,0 +1,11 @@
+*.suo
+*.user
+*.cache
+Reports
+TestResult.xml
+_*
+Upgrade*
+Output
+lib
+.bundle
+.svn

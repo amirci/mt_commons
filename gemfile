@@ -1,0 +1,19 @@
+source :rubygems
+
+gem 'albacore'
+gem 'git'
+gem 'noodle'
+
+group :dev do
+	gem 'castle.windsor', '~> 2.5.1'
+	gem 'commonservicelocator'
+	gem 'microsoft.composite'
+	gem 'maventhought.testing'
+end
+
+group :tools do
+#  gem 'stylecop'
+#  gem 'gallio'
+  gem 'nunit'
+end
+
