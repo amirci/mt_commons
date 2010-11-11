@@ -1,5 +1,4 @@
 using System;
-using MavenThought.Commons.Events;
 using MavenThought.Commons.Testing;
 
 namespace MavenThought.Commons.Tests.Events
@@ -51,15 +50,6 @@ namespace MavenThought.Commons.Tests.Events
             var generator = new RandomGenerator();
 
             this._property = generator.Generate<T>();
-        }
-
-        /// <summary>
-        /// Creat the mock property changed
-        /// </summary>
-        /// <returns>A new instance of MockPropertyChanged</returns>
-        protected override AbstractNotifyPropertyChanged CreateSut()
-        {
-            return Partial<AbstractNotifyPropertyChanged>();
         }
 
         /// <summary>
