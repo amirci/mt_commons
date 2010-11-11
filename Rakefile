@@ -69,7 +69,7 @@ namespace :test do
 	desc 'Run all tests'
 	task :all do 
 		tests = FileList["test/**/bin/**/*.Tests.dll"].join " "
-		`./tools/gallio/bin/gallio.echo.exe #{tests}`
+		system "./tools/gallio/bin/gallio.echo.exe #{tests}"
 	end
 	
 end
