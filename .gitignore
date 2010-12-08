@@ -9,3 +9,5 @@ Output
 lib
 .bundle
 .svn
+pkg
+*.gemspec

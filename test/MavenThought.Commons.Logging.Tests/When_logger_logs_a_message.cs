@@ -1,5 +1,4 @@
 using System.IO;
-using log4net.Config;
 using Microsoft.Practices.Composite.Logging;
 using MavenThought.Commons.Testing;
 

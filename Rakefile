@@ -14,11 +14,10 @@ include FileUtils
 solution_file = FileList["*.sln"].first
 build_file = FileList["*.msbuild"].first
 project_name = "MavenThought.Commons"
-commit = Git.open(".").log.first.sha[0..10]
+commit = Git.open(".").log.first.sha[0..10] rescue 'na'
 version = "0.2.0.0"
 deploy_folder = "c:/temp/build/#{project_name}.#{version}_#{commit}"
 merged_folder = "#{deploy_folder}/merged"
-zip_file = "#{deploy_folder}/#{project_name}.#{version}_#{commit}.zip"
 
 CLEAN.include("main/**/bin", "main/**/obj", "test/**/obj", "test/**/bin", "gem/lib/**", ".svn")
 
@@ -54,7 +53,6 @@ namespace :build do
 
 	desc "Build the project"
 	msbuild :all, :config do |msb, args|
-		msb.path_to_command =  msbuild_path
 		msb.properties :configuration => args[:config] || :Debug
 		msb.targets :Build
 		msb.solution = solution_file
@@ -81,14 +79,18 @@ namespace :deploy do
 		Dir.mkdir(deploy_folder) unless File.directory? deploy_folder
 		Rake::Task["build:all"].invoke(:Release)
 		
-		["test:all", "deploy:package", "deploy:merge", "deploy:gem"].each do |taskName|
+		["test:all", "deploy:package", "jeweler:build"].each do |taskName|
 			Rake::Task[taskName].invoke
 		end
 	end 
 	
 	task :update_version do 
 		files = FileList["main/**/Properties/AssemblyInfo.cs"]
-		files.each { |file| Rake::Task["deploy:assemblyinfo"].invoke(file) }
+		ass = Rake::Task["deploy:assemblyinfo"]
+		files.each do |file| 
+			ass.invoke(file) 
+			ass.reenable
+		end
 	end
 	
 	assemblyinfo :assemblyinfo, :file do |asm, args|
@@ -96,28 +98,18 @@ namespace :deploy do
 		asm.company_name = "MavenThought Inc."
 		asm.product_name = "MavenThought Commons"
 		asm.title = "MavenThought Commons (sha #{commit})"
-		asm.description = "Selection of classes and extension used for many MavenThought projects and clients"
-		asm.copyright = "MavenThought Inc. 2010"
+		asm.description = "Selection of utility classes and extensions used for many MavenThought projects and clients"
+		asm.copyright = "MavenThought Inc. 2006 - #{Date.new.year}"
 		asm.output_file = args[:file]
 	end	
 		
-	task :package do
+	zip :package do |zip|
 		Dir.mkdir(deploy_folder) unless File.directory? deploy_folder
-		curdir = Dir.pwd
-		Dir.chdir("main/#{project_name}/bin/release")
-		files = FileList["*.dll"]
-		puts "Sorry can't find any files in #{Dir.pwd} to add to the zip" unless !files.empty?
-		puts "Creating zip file #{zip_file}" unless !files.empty?
-		Zip::ZipOutputStream.open(zip_file) do |zos|
-			files.each do |file|
-				# Create a new entry with some arbitrary name
-				zos.put_next_entry(file)
-				# Add the contents of the file, don't read the stuff linewise if its binary, instead use direct IO
-				content = IO.read(file)
-				zos.write(content)
-			end
-		end
-		Dir.chdir(curdir)
+		zip_file = "#{project_name}.#{version}_#{commit}.zip"
+		puts "Creating zip file #{zip_file}"
+		zip.directories_to_zip "main/MavenThought.Commons.WPF/bin/release"
+		zip.output_file = zip_file
+		zip.output_path = deploy_folder
 	end
 	
 	task :merge do
@@ -135,17 +127,25 @@ namespace :deploy do
 		mv("#{project_name}.dll", merged_folder)
 		rm("#{project_name}.pdb")
 	end
+	  
+end
 
-	task :gem do
-		rm_rf('gem/lib') if File.directory?('gem/lib')
-		mkdir('gem/lib')
-		FileList["#{merged_folder}/*.dll"].each { |f| cp(f, "gem/lib") }
-		chdir('gem')
-		spec = eval(IO.read("#{project_name}.gemspec"))
-		spec.version = version
-		Gem::Builder.new(spec).build
-		chdir('..')
-		FileList["gem/#{project_name}-*.gem"].each { |f| mv(f, deploy_folder) }
+namespace :jeweler do
+	require 'jeweler'  
+	
+	
+	Jeweler::Tasks.new do |gs|
+		gs.name = "maventhought.commons"
+		gs.summary = "Utility classes, patterns and extension methods used by MavenThought in several projects"
+		gs.description = "Useful patterns and extensions classes for enumerable, pair, etc"
+		gs.email = "amir@barylko.com"
+		gs.homepage = "http://orthocoders.com"
+		gs.authors = ["Amir Barylko"]
+		gs.has_rdoc = false  
+		gs.rubyforge_project = 'maventhought.commons'  
+		gs.files = Dir.glob("main/MavenThought.Commons.WPF/bin/release/MavenThought*.dll")
+		gs.add_dependency('castle.windsor', '~> 2.5.1')
+		gs.add_dependency('commonservicelocator')
+		gs.add_dependency('microsoft.composite')
 	end
-  
 end

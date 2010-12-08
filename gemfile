@@ -1,8 +1,11 @@
 source :rubygems
 
-gem 'albacore'
-gem 'git'
-gem 'noodle'
+group :setup do
+	gem 'albacore'
+	gem 'git'
+	gem 'noodle'
+	gem 'jeweler'
+end
 
 group :dev do
 	gem 'castle.windsor', '~> 2.5.1'
