@@ -184,9 +184,6 @@
     <Compile Include="Extensions\When_joining_the_elements.cs">
       <DependentUpon>JoinSpecification.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logging\When_logger_logs_a_message.cs">
-      <DependentUpon>Log4NetLoggerSpecification.cs</DependentUpon>
-    </Compile>
     <Compile Include="When_assert_not_null_a_null_element.cs">
       <DependentUpon>AssertAreNotNullSpecification.cs</DependentUpon>
     </Compile>
@@ -213,7 +210,6 @@
       <DependentUpon>DifferenceSpecification.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\When_creating_enumerable.cs" />
-    <Compile Include="Logging\Log4NetLoggerSpecification.cs" />
     <Compile Include="Events\When_property_change_notify_is_called_with_expresssion.cs">
       <DependentUpon>AbstractNotifyPropertyChangedSpecification.cs</DependentUpon>
     </Compile>
@@ -224,16 +220,10 @@
     <Compile Include="Extensions\When_mapping_a_collection.cs">
       <DependentUpon>MapSpecification.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logging\SafeLoggerSpecification.cs" />
-    <Compile Include="Logging\When_safe_logger_facade_can_not_get_the_logger_service.cs">
-      <DependentUpon>SafeLoggerSpecification.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Logging\When_safe_logger_uses_service_locator.cs">
-      <DependentUpon>SafeLoggerSpecification.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Delegates\" />
+    <Folder Include="Logging\" />
     <Folder Include="Patterns\" />
     <Folder Include="Units\" />
   </ItemGroup>

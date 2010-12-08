@@ -100,6 +100,10 @@
     <Compile Include="Windsor\WindsorServiceLocator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MavenThought.Commons.Logging\MavenThought.Commons.Logging.csproj">
+      <Project>{B4DB97B5-4913-4650-B4A8-7DACB285DA20}</Project>
+      <Name>MavenThought.Commons.Logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MavenThought.Commons\MavenThought.Commons.csproj">
       <Project>{4CCEA239-252A-49D8-8BC0-2673AEE5FDE6}</Project>
       <Name>MavenThought.Commons</Name>

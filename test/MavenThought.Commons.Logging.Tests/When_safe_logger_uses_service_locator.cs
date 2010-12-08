@@ -1,10 +1,9 @@
-using MavenThought.Commons.Logging;
 using Microsoft.Practices.Composite.Logging;
 using Microsoft.Practices.ServiceLocation;
 using Rhino.Mocks;
 using MavenThought.Commons.Testing;
 
-namespace MavenThought.Commons.Tests.Logging
+namespace MavenThought.Commons.Logging.Tests
 {
     /// <summary>
     /// Specification when using the service locator

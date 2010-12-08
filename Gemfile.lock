@@ -12,7 +12,6 @@ GEM
     castle.windsor (2.5.1.0)
       castle.core (= 2.5.1.0.20100926)
     commonservicelocator (1.0.0.0)
-    gallio (3.2.601)
     git (1.2.5)
     log4net (1.2.10.0)
     maventhought.testing (0.2.0.0)
@@ -20,8 +19,6 @@ GEM
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
     net-ssh (2.0.23)
-    nhibernate (1.2.1.4000)
-      log4net (= 1.2.10.0)
     nlog (1.0.0.505.20100822)
     noodle (0.3.0)
       bundler (>= 1.0.0.rc.3)
@@ -38,10 +35,8 @@ DEPENDENCIES
   albacore
   castle.windsor (~> 2.5.1)
   commonservicelocator
-  gallio
   git
   maventhought.testing
   microsoft.composite
-  nhibernate
   noodle
   nunit

@@ -1,8 +1,9 @@
 using System.IO;
+using log4net.Config;
 using Microsoft.Practices.Composite.Logging;
 using MavenThought.Commons.Testing;
 
-namespace MavenThought.Commons.Tests.Logging
+namespace MavenThought.Commons.Logging.Tests
 {
     /// <summary>
     /// Specification when logging a message

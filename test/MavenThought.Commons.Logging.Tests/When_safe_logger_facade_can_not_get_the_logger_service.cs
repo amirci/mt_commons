@@ -1,8 +1,7 @@
-using MavenThought.Commons.Logging;
 using Microsoft.Practices.Composite.Logging;
 using MavenThought.Commons.Testing;
 
-namespace MavenThought.Commons.Tests.Logging
+namespace MavenThought.Commons.Logging.Tests
 {
     /// <summary>
     /// Specification when the service locator does not have a logger service

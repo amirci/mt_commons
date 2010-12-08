@@ -52,18 +52,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core">
-      <HintPath>..\..\lib\castle.core-2.5.1.0.20100926\dotNet35\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\lib\log4net-1.2.10.0\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Composite">
-      <HintPath>..\..\lib\microsoft.composite-2.0.0\Microsoft.Practices.Composite.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\..\lib\commonservicelocator-1.0.0.0\net-2.0\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -162,10 +150,6 @@
     <Compile Include="ITuple.four.cs">
       <DependentUpon>ITuple.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logging\ConsoleLoggerFacade.cs" />
-    <Compile Include="Logging\Log4NetLogger.cs" />
-    <Compile Include="Logging\LoggerFacadeExtensions.cs" />
-    <Compile Include="Logging\SafeLogger.cs" />
     <Compile Include="Pair.cs" />
     <Compile Include="Pair.Make.cs" />
     <Compile Include="Tuple.cs" />

@@ -1,6 +1,6 @@
 using MavenThought.Commons.Testing;
 
-namespace MavenThought.Commons.Tests.Logging
+namespace MavenThought.Commons.Logging.Tests
 {
     /// <summary>
     /// Base specification for SafeLogger
