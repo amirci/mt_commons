@@ -40,7 +40,7 @@ namespace :setup do
 			system "bundle install --system"
 		end	
 		Noodle::Rake::NoodleTask.new :local do |n|
-			n.groups << :dev
+			n.groups << :runtime
 			n.groups << :testing
 		end
 	end
