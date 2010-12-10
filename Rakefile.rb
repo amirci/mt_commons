@@ -2,10 +2,7 @@ require 'rubygems'
 
 require 'albacore'
 require 'rake/clean'
-require 'zip/zip'
-require 'zip/zipfilesystem'
 require 'git'
-require 'rake/gempackagetask'
 require 'noodle'
 require 'set'
 
@@ -79,7 +76,7 @@ namespace :deploy do
 		Dir.mkdir(deploy_folder) unless File.directory? deploy_folder
 		Rake::Task["build:all"].invoke(:Release)
 		
-		["test:all", "deploy:package", "jeweler:build"].each do |taskName|
+		["test:all", "deploy:package"].each do |taskName|
 			Rake::Task[taskName].invoke
 		end
 	end 
@@ -133,6 +130,13 @@ end
 namespace :jeweler do
 	require 'jeweler'  
 	
+	desc 'Build the release and then the gem'
+	task :buildit do
+		Rake::Task["build:all"].invoke(:Release)
+		files = Dir.glob("main/MavenThought.Commons.WPF/bin/release/Maven*.dll")
+		copy files, "lib"
+		Rake::Task["jeweler:build"].invoke
+	end
 	
 	Jeweler::Tasks.new do |gs|
 		gs.name = "maventhought.commons"
@@ -143,9 +147,7 @@ namespace :jeweler do
 		gs.authors = ["Amir Barylko"]
 		gs.has_rdoc = false  
 		gs.rubyforge_project = 'maventhought.commons'  
-		gs.files = Dir.glob("main/MavenThought.Commons.WPF/bin/release/MavenThought*.dll")
-		gs.add_dependency('castle.windsor', '~> 2.5.1')
-		gs.add_dependency('commonservicelocator')
-		gs.add_dependency('microsoft.composite')
+		gs.files = Dir.glob("lib/Maven*.dll")
+		gs.require_path = '.'
 	end
 end
