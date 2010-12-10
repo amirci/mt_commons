@@ -143,7 +143,7 @@ namespace :jeweler do
 		gs.summary = "Utility classes, patterns and extension methods used by MavenThought in several projects"
 		gs.description = "Useful patterns and extensions classes for enumerable, pair, etc"
 		gs.email = "amir@barylko.com"
-		gs.homepage = "http://orthocoders.com"
+		gs.homepage = "https://github.com/amirci/mt_commons"
 		gs.authors = ["Amir Barylko"]
 		gs.has_rdoc = false  
 		gs.rubyforge_project = 'maventhought.commons'  
