@@ -12,7 +12,7 @@ solution_file = FileList["*.sln"].first
 build_file = FileList["*.msbuild"].first
 project_name = "MavenThought.Commons"
 commit = Git.open(".").log.first.sha[0..10] rescue 'na'
-version = "0.2.0.0"
+version = IO.readlines('VERSION')[0] rescue "0.0.0.0"
 deploy_folder = "c:/temp/build/#{project_name}.#{version}_#{commit}"
 merged_folder = "#{deploy_folder}/merged"
 
@@ -131,11 +131,10 @@ namespace :jeweler do
 	require 'jeweler'  
 	
 	desc 'Build the release and then the gem'
-	task :buildit do
+	task :setup do
 		Rake::Task["build:all"].invoke(:Release)
 		files = Dir.glob("main/MavenThought.Commons.WPF/bin/release/Maven*.dll")
 		copy files, "lib"
-		Rake::Task["jeweler:build"].invoke
 	end
 	
 	Jeweler::Tasks.new do |gs|
