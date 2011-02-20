@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MavenThought.Commons.Loggin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MavenThought.Commons.Logging.Tests", "test\MavenThought.Commons.Logging.Tests\MavenThought.Commons.Logging.Tests.csproj", "{A0111EB4-8A28-4786-951B-DF05DB4B4231}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MavenThought.Commons.WPF.Tests", "test\MavenThought.Commons.WPF.Tests\MavenThought.Commons.WPF.Tests.csproj", "{40CE5EEB-99FF-49B7-868B-B5456EA9738E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A0111EB4-8A28-4786-951B-DF05DB4B4231}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0111EB4-8A28-4786-951B-DF05DB4B4231}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0111EB4-8A28-4786-951B-DF05DB4B4231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40CE5EEB-99FF-49B7-868B-B5456EA9738E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40CE5EEB-99FF-49B7-868B-B5456EA9738E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40CE5EEB-99FF-49B7-868B-B5456EA9738E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40CE5EEB-99FF-49B7-868B-B5456EA9738E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,5 +52,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2C8C8E2F-93B1-40B7-A877-37C3A740FBCF} = {649CE609-D209-494C-BB1F-3DDB680CBC9A}
 		{A0111EB4-8A28-4786-951B-DF05DB4B4231} = {649CE609-D209-494C-BB1F-3DDB680CBC9A}
+		{40CE5EEB-99FF-49B7-868B-B5456EA9738E} = {649CE609-D209-494C-BB1F-3DDB680CBC9A}
 	EndGlobalSection
 EndGlobal

@@ -20,5 +20,15 @@ namespace MavenThought.Commons.Extensions
 
             return result;
         }
+
+        /// <summary>
+        /// Returns a value indicating whether the collection is empty
+        /// </summary>
+        /// <param name="collection">Collection to check for</param>
+        /// <returns><c>true</c> if the collection has zero elements, <c>false</c> otherwise</returns>
+        public static bool IsEmpty(this IEnumerable collection)
+        {
+            return collection.Count() == 0;   
+        }
     }
 }

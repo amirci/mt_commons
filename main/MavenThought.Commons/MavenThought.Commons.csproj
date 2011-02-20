@@ -60,6 +60,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\MultiDictionary.Enumerable.cs">
+      <DependentUpon>MultiDictionary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Collections\MultiDictionary.Dictionary.cs">
+      <DependentUpon>MultiDictionary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Collections\MultiDictionary.Collection.cs">
+      <DependentUpon>MultiDictionary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Collections\IMultiDictionary.cs" />
+    <Compile Include="Collections\MultiDictionary.cs" />
     <Compile Include="Delegates\Action.Bind.cs">
       <DependentUpon>Action.cs</DependentUpon>
     </Compile>
