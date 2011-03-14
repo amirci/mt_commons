@@ -60,6 +60,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Collections\MultiDictionary.Enumerable.cs">
       <DependentUpon>MultiDictionary.cs</DependentUpon>
     </Compile>

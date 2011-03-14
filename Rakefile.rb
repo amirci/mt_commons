@@ -36,6 +36,9 @@ task :deploy => ["deploy:all"]
 desc "Run all unit tests"
 task :test => ["test:all"]
 
+desc "Builds and publishes the nuget pakage to the server"
+task :publish => ["publish:nuget"]
+
 namespace :setup do
 	desc "Setup dependencies for nuget packages"
 	task :dep do
@@ -70,42 +73,18 @@ end
 
 namespace :deploy do
 
-	task :all  => [:update_version] do
-		rm_rf(deploy_folder)
-		Dir.mkdir(deploy_folder) unless File.directory? deploy_folder
-		Rake::Task["build:all"].invoke(:Release)
-		
-		["test:all", "deploy:package"].each do |taskName|
-			Rake::Task[taskName].invoke
-		end
+	task :all  => ["util:update_version"] do
+		Rake::Task["util:clean_folder"].invoke(deploy_folder)
+		Rake::Task["util:build_release"].invoke
+		Rake::Task["deploy:package"].invoke
 	end 
 	
-	task :update_version do 
-		files = FileList["main/**/Properties/AssemblyInfo.cs"]
-		ass = Rake::Task["deploy:assemblyinfo"]
-		files.each do |file| 
-			ass.invoke(file) 
-			ass.reenable
-		end
-	end
-	
-	assemblyinfo :assemblyinfo, :file do |asm, args|
-		asm.version = version
-		asm.company_name = "MavenThought Inc."
-		asm.product_name = "MavenThought Commons"
-		asm.title = "MavenThought Commons (sha #{commit})"
-		asm.description = "Selection of utility classes and extensions used for many MavenThought projects and clients"
-		asm.copyright = "MavenThought Inc. 2006 - #{Date.new.year}"
-		asm.output_file = args[:file]
-	end	
-		
 	zip :package do |zip|
-		Dir.mkdir(deploy_folder) unless File.directory? deploy_folder
 		zip_file = "#{project_name}.#{version}_#{commit}.zip"
-		puts "Creating zip file #{zip_file}"
 		zip.directories_to_zip "main/MavenThought.Commons.WPF/bin/release"
 		zip.output_file = zip_file
 		zip.output_path = deploy_folder
+		puts "Zip file #{zip_file} created under #{deploy_folder}"
 	end
 	
 	task :merge do
@@ -126,26 +105,61 @@ namespace :deploy do
 	  
 end
 
-namespace :jeweler do
-	require 'jeweler'  
+namespace :publish do
 	
-	desc 'Build the release and then the gem'
-	task :setup do
-		Rake::Task["build:all"].invoke(:Release)
-		files = Dir.glob("main/MavenThought.Commons.WPF/bin/release/Maven*.dll")
-		copy files, "lib"
+	desc "Publish nuget package"
+	task :nuget  => ["util:build_release"] do
+		nuget_lib = "nuget/lib"
+		Rake::Task["util:clean_folder"].invoke("nuget")
+		mkdir nuget_lib
+		FileList["main/**/bin/release/MavenT*.dll"].each { |f| cp f, nuget_lib }
+		nuget_package = "maventhought.commons"
+		Rake::Task["publish:package"].invoke(nuget_package)
+		sh "nuget push nuget/#{nuget_package}.#{version}.nupkg" 
+	end 
+
+	nuspec :spec, :package_id  do |nuspec, args|
+	   nuspec.id = args.package_id
+	   nuspec.version = version
+	   nuspec.authors = "Amir Barylko"
+	   nuspec.owners = "Amir Barylko"
+	   nuspec.description = "Common utilities and extension classes used by MavenThought projects"
+	   nuspec.summary = "Common utilities and extension classes used by MavenThought projects"
+	   nuspec.language = "en-US"
+	   nuspec.licenseUrl = "https://github.com/amirci/mt_commons/LICENSE"
+	   nuspec.projectUrl = "https://github.com/amirci/mt_commons"
+	   nuspec.working_directory = "nuget"
+	   nuspec.output_file = "#{args.package_id}.#{version}.nuspec"
+	   nuspec.tags = "testing automocking givenwhenthen"
+	   nuspec.dependency "maventhought.testing", "0.3.3"
+	   nuspec.dependency "castle.core", "2.5.1"
 	end
 	
-	Jeweler::Tasks.new do |gs|
-		gs.name = "maventhought.commons"
-		gs.summary = "Utility classes, patterns and extension methods used by MavenThought in several projects"
-		gs.description = "Useful patterns and extensions classes for enumerable, pair, etc"
-		gs.email = "amir@barylko.com"
-		gs.homepage = "https://github.com/amirci/mt_commons"
-		gs.authors = ["Amir Barylko"]
-		gs.has_rdoc = false  
-		gs.rubyforge_project = 'maventhought.commons'  
-		gs.files = Dir.glob("lib/Maven*.dll")
-		gs.require_path = '.'
+	nugetpack :package, :package_id do |p, args|
+		spec = Rake::Task["publish:spec"]
+		spec.invoke(args.package_id)
+		spec.reenable
+		p.nuspec = "nuget/#{args.package_id}.#{version}.nuspec"
+		p.output = "nuget"
+	end
+end
+
+namespace :util do
+	task :clean_folder, :folder do |t, args|
+		rm_rf(args.folder)
+		Dir.mkdir(args.folder) unless File.directory? args.folder
+	end
+		
+	assemblyinfo :update_version do |asm|
+		asm.version = version
+		asm.company_name = "MavenThought Inc."
+		asm.product_name = "MavenThought Commons (sha #{commit})"
+		asm.copyright = "MavenThought Inc. 2006 - #{DateTime.now.year}"
+		asm.output_file = "main/GlobalAssemblyInfo.cs"
+	end	
+
+	task :build_release => [:update_version] do 
+		Rake::Task["build:all"].invoke(:Release)
+		Rake::Task["test"].invoke
 	end
 end

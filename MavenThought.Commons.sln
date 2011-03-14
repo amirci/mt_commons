@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MavenThought.Commons.Tests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MavenThought.Commons.WPF.Tests", "test\MavenThought.Commons.WPF.Tests\MavenThought.Commons.WPF.Tests.csproj", "{40CE5EEB-99FF-49B7-868B-B5456EA9738E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C5E533BB-DE1C-4AAC-B6AF-91CE429706C2}"
+	ProjectSection(SolutionItems) = preProject
+		main\GlobalAssemblyInfo.cs = main\GlobalAssemblyInfo.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

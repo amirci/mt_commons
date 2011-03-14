@@ -2,8 +2,10 @@
 *.user
 *.cache
 *.Cache
+packages
 Packages
 Reports
+nuget
 TestResult.xml
 _*
 Upgrade*
