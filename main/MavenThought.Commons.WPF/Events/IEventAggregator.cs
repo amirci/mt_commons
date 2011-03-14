@@ -8,10 +8,11 @@ namespace MavenThought.Commons.WPF.Events
     public interface IEventAggregator
     {
         /// <summary>
-        /// Subscribe a handler to be notified when the event is raised
+        /// Subscribe a handler to an event using an action
         /// </summary>
-        /// <typeparam name="T">Type of the event</typeparam>
-        IHandleEventsOfType<T> Subscribe<T>(Action<T> handler) where T : IEvent;
+        /// <typeparam name="T"></typeparam>
+        /// <param name="action"></param>
+        IHandleEventsOfType<T> Subscribe<T>(Action<T> action) where T : IEvent;
 
         /// <summary>
         /// Raises an event and notified to all the subscribers

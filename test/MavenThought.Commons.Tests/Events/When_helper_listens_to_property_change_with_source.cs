@@ -14,7 +14,7 @@ namespace MavenThought.Commons.Tests.Events
         /// <summary>
         /// Action to use
         /// </summary>
-        private Action<DummyPropertyChanged> _action;
+        private Action<IDummyPropertyChanged> _action;
 
         /// <summary>
         /// Checks the action was called
@@ -32,7 +32,7 @@ namespace MavenThought.Commons.Tests.Events
         {
             base.GivenThat();
 
-            this._action = Mock<Action<DummyPropertyChanged>>();
+            this._action = Mock<Action<IDummyPropertyChanged>>();
 
             this.Target.On(m => m.AnyProperty, this._action);
         }

@@ -2,7 +2,7 @@
 
 namespace MavenThought.Commons.Delegates
 {
-    static public class ActionHelper
+    public static class ActionHelper
     {
         /// <summary>
         /// Returns a unary action equivalent to the binary action with the second argument bound to a value
@@ -12,7 +12,7 @@ namespace MavenThought.Commons.Delegates
         /// <param name="action">Binary action to use</param>
         /// <param name="val">Value to bind as second parameter</param>
         /// <returns>result where forAll( x | result( x ) = action( x, val ) ) </returns>
-        public static Action<T1> Bind<T1, T2>( this Action<T1, T2> action, T2 val )
+        public static Action<T1> Bind<T1, T2>(this Action<T1, T2> action, T2 val)
         {
             return x => action(x, val);
         }
@@ -25,7 +25,7 @@ namespace MavenThought.Commons.Delegates
         /// <param name="action">Action to use</param>
         /// <param name="val">Value to bind as first parameter</param>
         /// <returns>result where forAll( x | result( x ) = action( val, x ) ) </returns>
-        public static Action<T2> Bind<T1, T2>( this Action<T1, T2> action, T1 val)
+        public static Action<T2> Bind<T1, T2>(this Action<T1, T2> action, T1 val)
         {
             return x => action(val, x);
         }

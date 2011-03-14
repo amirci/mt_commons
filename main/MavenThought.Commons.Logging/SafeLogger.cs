@@ -29,7 +29,7 @@ namespace MavenThought.Commons.Logging
         {
             get
             {
-                ILoggerFacade result ;
+                ILoggerFacade result;
 
                 try
                 {

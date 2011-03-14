@@ -26,7 +26,7 @@ namespace MavenThought.Commons.Tests
         {
             base.GivenThat();
 
-            this.Collection = new [] { default(T) };
+            this.Collection = new[] { default(T) };
         }
 
         /// <summary>

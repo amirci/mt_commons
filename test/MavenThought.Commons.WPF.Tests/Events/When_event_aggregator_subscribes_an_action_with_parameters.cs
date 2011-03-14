@@ -7,7 +7,7 @@ using MavenThought.Commons.Testing;
 namespace MavenThought.Commons.WPF.Tests.Events
 {
     /// <summary>
-    /// Specification when ...
+    /// Specification when subscribing an event with parameters
     /// </summary>
     [Specification]
     public class When_event_aggregator_subscribes_an_action_with_parameters 
@@ -24,10 +24,12 @@ namespace MavenThought.Commons.WPF.Tests.Events
         [It]
         public void Should_call_the_handler()
         {
-            this._handlers
-                .ForEach(h => h.AssertWasCalled(handler => handler(Arg<IDontKnow>.Matches(ev => ev.Name == "Test" && ev.Id == 504))));
-        }
+            var sameIdk = new Func<IDontKnow, bool>(idk => idk.Name == "Test" && idk.Id == 504);
 
+            this._handlers
+                .ForEach(h => h.AssertWasCalled(handler => handler(Arg<IDontKnow>.Matches(x => sameIdk(x)))));
+        }
+        
         /// <summary>
         /// Subscribes the handler
         /// </summary>
@@ -35,19 +37,11 @@ namespace MavenThought.Commons.WPF.Tests.Events
         {
             base.AndGivenThatAfterCreated();
 
+            this._handlers = 10.Times(() => Mock<Action<IDontKnow>>());
+
             this._handlers.ForEach(h => this.Sut.Subscribe(h));
         }
         
-        /// <summary>
-        /// Setup the handler
-        /// </summary>
-        protected override void GivenThat()
-        {
-            base.GivenThat();
-
-            this._handlers = 10.Times(() => Mock<Action<IDontKnow>>());
-        }
-
         /// <summary>
         /// Raise the event
         /// </summary>

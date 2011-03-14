@@ -2,7 +2,6 @@
 {
     partial class Ensure
     {
-
         /// <summary>
         /// Ensures that two objets are equal specifying a message
         /// </summary>
@@ -11,7 +10,7 @@
         /// <param name="second">Second argument</param>
         /// <param name="msg">Message to use</param>
         /// <param name="args">Arguments for the string format</param>
-        static public void AreEqual<T>(T first, T second, string msg, params object[] args)
+        public static void AreEqual<T>(T first, T second, string msg, params object[] args)
         {
             IsTrue(Equals(first, second), msg, args);
         }
@@ -22,7 +21,7 @@
         /// <typeparam name="T">Type of the objects</typeparam>
         /// <param name="first">First argument</param>
         /// <param name="second">Second argument</param>
-        static public void AreEqual<T>(T first, T second)
+        public static void AreEqual<T>(T first, T second)
         {
             AreEqual(first, second, "The objects are not equal");
         }

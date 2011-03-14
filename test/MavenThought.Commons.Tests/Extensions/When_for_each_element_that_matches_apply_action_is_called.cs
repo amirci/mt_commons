@@ -3,7 +3,6 @@ using MavenThought.Commons.Extensions;
 using Rhino.Mocks;
 using MavenThought.Commons.Testing;
 
-
 namespace MavenThought.Commons.Tests.Extensions
 {
     /// <summary>

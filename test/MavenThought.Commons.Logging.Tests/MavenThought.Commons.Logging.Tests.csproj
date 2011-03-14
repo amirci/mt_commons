@@ -31,32 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gallio, Version=3.2.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\Gallio.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\lib\log4net-1.2.10.0\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="MavenThought.Commons.Testing, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\MavenThought.Commons.Testing.dll</HintPath>
-    </Reference>
-    <Reference Include="MbUnit, Version=3.2.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\MbUnit.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Composite">
-      <HintPath>..\..\lib\microsoft.composite-2.0.0\Microsoft.Practices.Composite.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
-    <Reference Include="Rhino.Mocks">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\Rhino.Mocks.dll</HintPath>
-    </Reference>
-    <Reference Include="StructureMap">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\StructureMap.dll</HintPath>
-    </Reference>
-    <Reference Include="StructureMap.AutoMocking">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\StructureMap.AutoMocking.dll</HintPath>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -80,15 +56,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\main\MavenThought.Commons.Logging\MavenThought.Commons.Logging.csproj">
-      <Project>{B4DB97B5-4913-4650-B4A8-7DACB285DA20}</Project>
-      <Name>MavenThought.Commons.Logging</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

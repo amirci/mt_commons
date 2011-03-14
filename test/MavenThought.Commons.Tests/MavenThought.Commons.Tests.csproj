@@ -52,31 +52,31 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Gallio, Version=3.2.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\Gallio.dll</HintPath>
+      <HintPath>..\..\packages\Gallio.3.2.601\lib\Gallio.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\lib\log4net-1.2.10.0\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="MavenThought.Commons.Testing, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\MavenThought.Commons.Testing.dll</HintPath>
+    <Reference Include="MavenThought.Commons.Testing, Version=0.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\maventhought.testing.0.3.3\lib\MavenThought.Commons.Testing.dll</HintPath>
     </Reference>
     <Reference Include="MbUnit, Version=3.2.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\MbUnit.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Composite, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\microsoft.composite-2.0.0\Microsoft.Practices.Composite.dll</HintPath>
+      <HintPath>..\..\packages\Gallio.3.2.601\lib\MbUnit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <HintPath>..\..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="Rhino.Mocks">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\Rhino.Mocks.dll</HintPath>
+    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\RhinoMocks.3.6\lib\Rhino.Mocks.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\StructureMap.dll</HintPath>
+    <Reference Include="SharpTestsEx, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap.AutoMocking">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\StructureMap.AutoMocking.dll</HintPath>
+    <Reference Include="StructureMap, Version=2.6.2.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\structuremap.2.6.2\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.AutoMocking, Version=2.6.2.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\structuremap.automocking.2.6.2.0\lib\StructureMap.AutoMocking.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -99,7 +99,9 @@
     <Compile Include="Extensions\SliceSpecification.cs" />
     <Compile Include="EnsureSpecification.cs" />
     <Compile Include="Extensions\FindPreviousSpecification.cs" />
-    <Compile Include="Extensions\BaseEnumerableSpecification.cs" />
+    <Compile Include="Extensions\BaseEnumerableSpecification.cs">
+      <DependentUpon>When_creating_enumerable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\FindSpecification.cs" />
     <Compile Include="Extensions\When_find_previous_does_not_find_a_match.cs">
       <DependentUpon>FindPreviousSpecification.cs</DependentUpon>
@@ -220,6 +222,7 @@
     <Compile Include="Extensions\When_mapping_a_collection.cs">
       <DependentUpon>MapSpecification.cs</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Delegates\" />

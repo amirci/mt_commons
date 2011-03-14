@@ -1,6 +1,5 @@
 using System;
 
-
 namespace MavenThought.Commons.Tests.Extensions
 {
     /// <summary>

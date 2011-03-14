@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using MavenThought.Commons.Testing;
 
-
 namespace MavenThought.Commons.Tests
 {
     /// <summary>
@@ -22,6 +21,5 @@ namespace MavenThought.Commons.Tests
         {
             this.Collection = new RandomGenerator().GenerateCollection<T>(100);
         }
-
     }
 }

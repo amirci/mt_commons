@@ -1,8 +1,8 @@
 using System;
+using System.Linq;
 using MavenThought.Commons.Extensions;
 using MavenThought.Commons.Testing;
 using Rhino.Mocks;
-
 
 namespace MavenThought.Commons.Tests.Extensions
 {

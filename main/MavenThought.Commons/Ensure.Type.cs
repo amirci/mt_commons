@@ -2,7 +2,7 @@
 
 namespace MavenThought.Commons
 {
-    partial class Ensure
+    public partial class Ensure
     {
         /// <summary>
         /// Ensure that the argument is an instance of T
@@ -11,7 +11,7 @@ namespace MavenThought.Commons
         /// <param name="o">Object to check for</param>
         /// <param name="msg">Message to use</param>
         /// <param name="args">Arguments for the string format</param>
-        static public void IsInstanceOf<T>(object o, string msg, params object[] args)
+        public static void IsInstanceOf<T>(object o, string msg, params object[] args)
         {
             IsInstanceOf<T, Exception>(o, DefaultExceptionFunctor, msg, args);
         }
@@ -21,9 +21,9 @@ namespace MavenThought.Commons
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
-        static public void IsInstanceOf<T>(object obj )
+        public static void IsInstanceOf<T>(object obj)
         {
-            IsInstanceOf<T>( obj, "The type {0} is not assignable to {1}", obj.GetType(), typeof(T) );
+            IsInstanceOf<T>(obj, "The type {0} is not assignable to {1}", obj.GetType(), typeof(T));
         }
 
         /// <summary>
@@ -33,14 +33,14 @@ namespace MavenThought.Commons
         /// <typeparam name="UEx"></typeparam>
         /// <param name="obj"></param>
         /// <param name="functor"></param>
-        static public void IsInstanceOf<T, UEx>( object obj, Func<string, UEx> functor ) where UEx : Exception
+        public static void IsInstanceOf<T, UEx>(object obj, Func<string, UEx> functor) where UEx : Exception
         {
             IsInstanceOf<T, UEx>(obj, functor, "The type {0} is not assignable to {1}", obj.GetType(), typeof(T));            
         }
 
-        static public void IsIntanceOf<T, UEx>( object obj, Func<UEx> functor ) where UEx: Exception
+        public static void IsIntanceOf<T, UEx>(object obj, Func<UEx> functor) where UEx : Exception
         {
-            IsInstanceOf<T, UEx>( obj, s => functor() );
+            IsInstanceOf<T, UEx>(obj, s => functor());
         }
 
         /// <summary>

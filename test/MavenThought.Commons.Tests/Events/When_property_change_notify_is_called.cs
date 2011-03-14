@@ -51,7 +51,7 @@ namespace MavenThought.Commons.Tests.Events
         /// </summary>
         protected override void WhenIRun()
         {
-            var sut = ((SutNotifyPropertyChanged)this.Sut);
+            var sut = (SutNotifyPropertyChanged)this.Sut;
 
             this._actual = sut.Notify("CurrentProperty", ref this._property, true);
         }

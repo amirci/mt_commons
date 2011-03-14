@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using MavenThought.Commons.Testing;
 
-
 namespace MavenThought.Commons.Tests.Extensions
 {
     /// <summary>

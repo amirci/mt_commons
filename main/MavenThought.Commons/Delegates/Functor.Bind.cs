@@ -17,7 +17,6 @@ namespace MavenThought.Commons.Delegates
         public static Func<T1, TResult> Bind<T1, T2, TResult>(this Func<T1, T2, TResult> fn, T2 val)
         {
             return x => fn(x, val);
-            
         }
 
         /// <summary>

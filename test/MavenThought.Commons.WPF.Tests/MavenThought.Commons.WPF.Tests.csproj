@@ -32,25 +32,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Gallio, Version=3.2.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\Gallio.dll</HintPath>
+      <HintPath>..\..\packages\gallio.3.2.601\lib\Gallio.dll</HintPath>
     </Reference>
-    <Reference Include="MavenThought.Commons.Testing, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\MavenThought.Commons.Testing.dll</HintPath>
+    <Reference Include="MavenThought.Commons.Testing, Version=0.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\maventhought.testing.0.3.3\lib\MavenThought.Commons.Testing.dll</HintPath>
     </Reference>
     <Reference Include="MbUnit, Version=3.2.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\MbUnit.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <HintPath>..\..\packages\gallio.3.2.601\lib\MbUnit.dll</HintPath>
     </Reference>
     <Reference Include="Rhino.Mocks">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\Rhino.Mocks.dll</HintPath>
+      <HintPath>..\..\packages\RhinoMocks.3.6\lib\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\StructureMap.dll</HintPath>
+      <HintPath>..\..\packages\structuremap.2.6.2\lib\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap.AutoMocking">
-      <HintPath>..\..\lib\maventhought.testing-0.2.0.0\StructureMap.AutoMocking.dll</HintPath>
+      <HintPath>..\..\packages\structuremap.automocking.2.6.2.0\lib\StructureMap.AutoMocking.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

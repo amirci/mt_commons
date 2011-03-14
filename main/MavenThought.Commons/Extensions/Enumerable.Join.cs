@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MavenThought.Commons.Extensions
+﻿namespace MavenThought.Commons.Extensions
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Linq;
+
     public static partial class Enumerable
     {
         /// <summary>
@@ -28,13 +29,16 @@ namespace MavenThought.Commons.Extensions
         /// <returns>result = concatenation( fn(x) + separator ).head()</returns>
         public static string Join<T>(this IEnumerable<T> collection, char separator, Func<T, string> fn)
         {
-            var builder = new StringBuilder();
-
-            collection.ForEach(x => builder.Append( fn( x ) + separator));
-
-            builder.Remove(builder.Length - 1, 1);
-
-            return builder.ToString();
+            return collection
+                .Head()
+                .Aggregate(new StringBuilder(), (b, x) =>
+                                                    {
+                                                        b.Append(fn(x));
+                                                        b.Append(separator);
+                                                        return b;
+                                                    })
+                .Append(collection.Last())
+                .ToString();
         }
 
     }

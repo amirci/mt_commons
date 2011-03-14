@@ -14,7 +14,7 @@ namespace MavenThought.Commons.WPF.Events
         /// <summary>
         /// Multi dictionary to store all the handlers byt type
         /// </summary>
-        private readonly IMultiDictionary<Type, EventSubscription> _eventHandlers = new MultiDictionary<Type, EventSubscription>();
+        private readonly IMultiDictionary<Type, IEventSubscription> _eventHandlers = new MultiDictionary<Type, IEventSubscription>();
 
         /// <summary>
         /// Generator of proxies
@@ -22,12 +22,15 @@ namespace MavenThought.Commons.WPF.Events
         private readonly ProxyGenerator _generator = new ProxyGenerator();
 
         /// <summary>
-        /// Subscribe a handler to be notified when the event is raised
+        /// Base subscription
         /// </summary>
-        /// <typeparam name="T">Type of the event</typeparam>
-        /// <param name="handler">Handler to use</param>
-        public void Subscribe<T>(IHandleEventsOfType<T> handler) where T : IEvent
+        internal interface IEventSubscription : IHandleEvents
         {
+            /// <summary>
+            /// Invoke the event
+            /// </summary>
+            /// <param name="event"></param>
+            void Invoke(object @event);
         }
 
         /// <summary>
@@ -43,14 +46,6 @@ namespace MavenThought.Commons.WPF.Events
             this._eventHandlers.Add(typeof(T), subscription);
 
             return subscription;
-        }
-
-        /// <summary>
-        /// Unsubscribe the event so no events will be notified
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        public void Unsubscribe<T>(IHandleEventsOfType<T> handler) where T : IEvent
-        {
         }
 
         /// <summary>
@@ -88,13 +83,13 @@ namespace MavenThought.Commons.WPF.Events
         /// </summary>
         /// <typeparam name="T">Type of the event</typeparam>
         /// <returns>A collection of listeners or an empty collection if no one was found</returns>
-        private IEnumerable<EventSubscription> FindListenersFor<T>()
+        private IEnumerable<IEventSubscription> FindListenersFor<T>()
         {
-            ICollection<EventSubscription> listeners;
+            ICollection<IEventSubscription> listeners;
 
             this._eventHandlers.TryGetValue(typeof(T), out listeners);
 
-            return listeners ?? System.Linq.Enumerable.Empty<EventSubscription>();
+            return listeners ?? System.Linq.Enumerable.Empty<IEventSubscription>();
         }
 
         /// <summary>
@@ -105,7 +100,7 @@ namespace MavenThought.Commons.WPF.Events
         private T CreateProxy<T>()
         {
             return (T) _generator
-                           .CreateInterfaceProxyWithoutTarget(typeof (T),
+                           .CreateInterfaceProxyWithoutTarget(typeof(T),
                                                               new IInterceptor[]
                                                                   {
                                                                       new AutoPropertyStub()
@@ -113,22 +108,10 @@ namespace MavenThought.Commons.WPF.Events
         }
         
         /// <summary>
-        /// Base subscription
-        /// </summary>
-        internal interface EventSubscription : IHandleEvents
-        {
-            /// <summary>
-            /// Invoke the event
-            /// </summary>
-            /// <param name="event"></param>
-            void Invoke(object @event);
-        }
-
-        /// <summary>
         /// Subscription with an action
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        internal class ActionEventSubscription<T> : EventSubscription, IHandleEventsOfType<T> where T : IEvent
+        internal class ActionEventSubscription<T> : IEventSubscription, IHandleEventsOfType<T> where T : IEvent
         {
             private readonly Action<T> _handler;
 

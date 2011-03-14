@@ -1,6 +1,8 @@
 *.suo
 *.user
 *.cache
+*.Cache
+Packages
 Reports
 TestResult.xml
 _*

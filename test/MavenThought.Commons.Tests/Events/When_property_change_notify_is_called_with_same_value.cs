@@ -15,7 +15,7 @@ namespace MavenThought.Commons.Tests.Events
         /// <summary>
         /// Property to pass
         /// </summary>
-        private T _property ;
+        private T _property;
 
         /// <summary>
         /// Indicates whether the value was changed
@@ -57,7 +57,7 @@ namespace MavenThought.Commons.Tests.Events
         /// </summary>
         protected override void WhenIRun()
         {
-            var sut = ((SutNotifyPropertyChanged)this.Sut);
+            var sut = (SutNotifyPropertyChanged)this.Sut;
 
             this._wasChanged = sut.Notify("CurrentProperty", ref this._property, this._property);
         }

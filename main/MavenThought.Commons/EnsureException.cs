@@ -13,6 +13,7 @@ namespace MavenThought.Commons
         /// <param name="message">Message to use for the exception</param>
         public EnsureException(string message)
             : base(message)
-        { }
+        {
+        }
     }
 }

@@ -5,7 +5,7 @@ using MavenThought.Commons.Delegates;
 
 namespace MavenThought.Commons.Extensions
 {
-    static public partial class Enumerable
+    public static partial class Enumerable
     {
         /// <summary>
         /// Checks a predicate for all the elements in the collection
@@ -14,9 +14,9 @@ namespace MavenThought.Commons.Extensions
         /// <param name="collection">Collection to use</param>
         /// <param name="predicate">Predicate to use</param>
         /// <returns>result = collection@pre->forAll( x | predicate(x) )</returns>
-        public static bool ForAll<T>( this IEnumerable<T> collection, Predicate<T> predicate )
+        public static bool ForAll<T>(this IEnumerable<T> collection, Predicate<T> predicate)
         {
-            return collection.All( x => predicate(x) );
+            return collection.All(x => predicate(x));
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace MavenThought.Commons.Extensions
         /// <param name="collection">Collection to use</param>
         /// <param name="predicate">Predicate to use</param>
         /// <returns>result = collection@pre->exists( x | predicate(x) )</returns>
-        public static bool Exists<T>( this IEnumerable<T> collection, Predicate<T> predicate )
+        public static bool Exists<T>(this IEnumerable<T> collection, Predicate<T> predicate)
         {
             return collection.Any(x => predicate(x));
         }
@@ -38,9 +38,9 @@ namespace MavenThought.Commons.Extensions
         /// <param name="collection">Collection to use</param>
         /// <param name="predicate">Predicate to use</param>
         /// <returns>result = collection@pre->forAll( x | !predicate(x) )</returns>
-        public static bool ForNone<T>( this IEnumerable<T> collection, Predicate<T> predicate )
+        public static bool ForNone<T>(this IEnumerable<T> collection, Predicate<T> predicate)
         {
-            return collection.ForAll( predicate.Not() );
+            return collection.ForAll(predicate.Not());
         }
     }
 }

@@ -1,9 +1,11 @@
 require 'rubygems'    
 
+sh "bundle install --system"
+Gem.clear_paths
+
 require 'albacore'
 require 'rake/clean'
 require 'git'
-require 'noodle'
 require 'set'
 
 include FileUtils
@@ -18,7 +20,7 @@ merged_folder = "#{deploy_folder}/merged"
 
 CLEAN.include("main/**/bin", "main/**/obj", "test/**/obj", "test/**/bin", "gem/lib/**", ".svn")
 
-CLOBBER.include("**/_*", "**/.svn", "lib/*", "**/*.user", "**/*.cache", "**/*.suo")
+CLOBBER.include("**/_*", "**/.svn", "packages/*", "lib/*", "**/*.user", "**/*.cache", "**/*.suo")
 
 msbuild_path = File.join(ENV['windir'], 'Microsoft.NET','Framework',  'v4.0.30319', 'MSBuild.exe')
 
@@ -26,7 +28,7 @@ desc 'Default build'
 task :default => ["build:all"]
 
 desc 'Setup requirements to build and deploy'
-task :setup => ["setup:dep:download", "setup:dep:local"]
+task :setup => ["setup:dep"]
 
 desc "Updates build version, generate zip, merged version and the gem in #{deploy_folder}"
 task :deploy => ["deploy:all"]
@@ -35,13 +37,10 @@ desc "Run all unit tests"
 task :test => ["test:all"]
 
 namespace :setup do
-	namespace :dep do
-		task :download do 
-			system "bundle install --system"
-		end	
-		Noodle::Rake::NoodleTask.new :local do |n|
-			n.groups << :runtime
-			n.groups << :testing
+	desc "Setup dependencies for nuget packages"
+	task :dep do
+		FileList["**/packages.config"].each do |file|
+			sh "nuget install #{file} /OutputDirectory Packages"
 		end
 	end
 end
@@ -49,7 +48,7 @@ end
 namespace :build do
 
 	desc "Build the project"
-	msbuild :all, :config do |msb, args|
+	msbuild :all, :config, :needs => :setup do |msb, args|
 		msb.properties :configuration => args[:config] || :Debug
 		msb.targets :Build
 		msb.solution = solution_file

@@ -13,6 +13,8 @@ namespace MavenThought.Commons.Tests.Events
         /// </summary>
         private string _stringProperty;
 
+        protected string StringProperty { get; set; }
+
         /// <summary>
         /// Checks tha handler is called
         /// </summary>
@@ -36,11 +38,9 @@ namespace MavenThought.Commons.Tests.Events
         /// </summary>
         protected override void WhenIRun()
         {
-            var sut = ((SutNotifyPropertyChanged)this.Sut);
+            var sut = (SutNotifyPropertyChanged)this.Sut;
 
             sut.Notify(() => this.StringProperty, ref this._stringProperty, "New value");
         }
-
-        protected string StringProperty { get; set; }
     }
 }

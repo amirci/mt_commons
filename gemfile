@@ -1,22 +1,16 @@
 source :rubygems
 
 group :runtime do
-	gem 'castle.windsor', '~> 2.5.1'
-	gem 'commonservicelocator'
-	gem 'microsoft.composite'
-	gem 'maventhought.testing'
+end
+
+group :dev do
 end
 
 group :setup do
 	gem 'albacore'
 	gem 'git'
-	gem 'noodle'
-	gem 'jeweler'
 end
 
 group :tools do
-#  gem 'stylecop'
-#  gem 'gallio'
-  gem 'nunit'
 end
 

@@ -22,7 +22,7 @@ namespace MavenThought.Commons.Delegates
         /// <param name="left">Predicate left operand</param>
         /// <param name="right">Predicate right operand</param>
         /// <returns>result where result(x) === left(x) && right(x)</returns>
-        public static Predicate<T> And<T>( this Predicate<T> left, Predicate<T> right )
+        public static Predicate<T> And<T>(this Predicate<T> left, Predicate<T> right)
         {
             return x => left(x) && right(x);
         }
@@ -34,7 +34,7 @@ namespace MavenThought.Commons.Delegates
         /// <param name="left">Left operand</param>
         /// <param name="right">Right operand</param>
         /// <returns>result where result(x) === left(x) || right(x)</returns>
-        public static Predicate<T> Or<T>( this Predicate<T> left, Predicate<T> right )
+        public static Predicate<T> Or<T>(this Predicate<T> left, Predicate<T> right)
         {
             return x => left(x) || right(x);            
         }

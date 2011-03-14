@@ -77,17 +77,9 @@ namespace MavenThought.Commons.Extensions
         /// <remarks>colection->forAll( x | if( predicate(x) ) action(x) )</remarks>
         public static void ForEach<T>(this IEnumerable<T> collection, Predicate<int, T> predicate, Action<int, T> action)
         {
-            var i = 0;
-
-            foreach (var t in collection)
-            {
-                if (predicate(i, t))
-                {
-                    action(i, t);
-                }
-
-                i++;
-            }
+            collection
+                .Where((t, i) => predicate(i, t))
+                .ForEach(action);
         }
 
         /// <summary>
@@ -100,11 +92,7 @@ namespace MavenThought.Commons.Extensions
         /// <remarks>colection->forAll( x | if( predicate(x) ) action(x) )</remarks>
         public static void ForEach<T>(this IEnumerable collection, Predicate<T> predicate, Action<T> action)
         {
-            foreach (var t in collection)
-            {
-                if (predicate((T)t))
-                    action((T)t);
-            }
+            collection.Cast<T>().Where(t => predicate(t)).ForEach(action);
         }
 
         /// <summary>
@@ -116,7 +104,9 @@ namespace MavenThought.Commons.Extensions
         /// <param name="func">Functor to use</param>
        public static IEnumerable<TResult> ForEach<T, TResult>(this IEnumerable<T> collection, Func<T, TResult> func)
         {
-            return collection.Select(func).ToList();
+           // need to evaluate the collection in order to call the functor....
+           // otherwise it may not b called until is evaluated
+           return collection.Select(func).ToList();
         }
 
        /// <summary>
@@ -128,13 +118,7 @@ namespace MavenThought.Commons.Extensions
        /// <param name="func">Functor to use</param>
        public static IEnumerable<TResult> ForEach<T, TResult>(this IEnumerable<T> collection, Func<int, T, TResult> func)
        {
-           var result = new List<TResult>();
-
-           var action = new Action<int, T>((i, e) => result.Add(func(i, e)));
-
-           ForEach(collection, action);
-
-           return result;
+           return collection.Select((element, i) => func(i, element)).ToList();
        }
 
         /// <summary>
@@ -148,13 +132,10 @@ namespace MavenThought.Commons.Extensions
         /// <returns>A collection with the reult of calling func on the matching element</returns>
         public static IEnumerable<TResult> ForEach<T, TResult>(this IEnumerable collection, Predicate<T> predicate, Func<T, TResult> func)
         {
-            var result = new List<TResult>();
-
-            var action = new Action<T>(e => result.Add(func(e)));
-
-            ForEach(collection, predicate, action);
-
-            return result;
+            return collection.Cast<T>()
+                .Where(t => predicate(t))
+                .Select(func)
+                .ToList();
         }
 
         /// <summary>
@@ -168,13 +149,10 @@ namespace MavenThought.Commons.Extensions
         /// <returns>A collection with the reult of calling func on the matching element</returns>
         public static IEnumerable<TResult> ForEach<T, TResult>(this IEnumerable<T> collection, Predicate<int, T> predicate, Func<int, T, TResult> func)
         {
-            var result = new List<TResult>();
-
-            var action = new Action<int, T>((i, e) => result.Add(func(i, e)));
-
-            ForEach(collection, predicate, action);
-
-            return result;
+            return collection
+                .Where((t, i) => predicate(i, t))
+                .Select((t, i) => func(i, t))
+                .ToList();
         }
     }
 }

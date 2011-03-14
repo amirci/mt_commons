@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MavenThought.Commons.Extensions
 {
@@ -16,7 +17,9 @@ namespace MavenThought.Commons.Extensions
         /// <returns> result = collection@pre->select( x | predicate( x ) )</returns>
         public static IEnumerable<T> Copy<T>(this IEnumerable<T> collection, ICollection<T> result, Predicate<T> predicate)
         {
-            collection.ForEach(delegate(T x) { if (predicate(x)) result.Add(x); });
+            collection
+                .Where(x => predicate(x))
+                .ForEach(result.Add);
 
             return result;
         }
@@ -31,7 +34,10 @@ namespace MavenThought.Commons.Extensions
         /// <returns> result = collection@pre->select( x | predicate( x ) )</returns>
         public static IEnumerable<T> Copy<T>(this IEnumerable collection, ICollection<T> result, Predicate<T> predicate)
         {
-            collection.ForEach(delegate(T x) { if (predicate(x)) result.Add(x); });
+            collection
+                .Cast<T>()
+                .Where(x => predicate(x))
+                .ForEach(result.Add);
 
             return result;
         }

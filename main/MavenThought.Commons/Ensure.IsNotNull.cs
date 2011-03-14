@@ -2,8 +2,8 @@
 
 namespace MavenThought.Commons
 {
-	public partial class Ensure
-	{
+    public partial class Ensure
+    {
         /// <summary>
         /// Ensures the object is not null
         /// </summary>
@@ -11,7 +11,7 @@ namespace MavenThought.Commons
         /// <param name="msg">Message to use</param>
         /// <param name="args">Arguments for the string format</param>
         /// <exception cref="EnsureException">If the object is null with the specified message</exception>
-        static public void IsNotNull(object obj, string msg, params object[] args)
+        public static void IsNotNull(object obj, string msg, params object[] args)
         {
             IsTrue(obj != null, msg, args);
         }
@@ -21,7 +21,7 @@ namespace MavenThought.Commons
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
-        static public void IsNotNull<T>( object obj ) where T: Exception, new()
+        public static void IsNotNull<T>(object obj) where T : Exception, new()
         {
             IsTrue<T>( obj != null );
         }
@@ -34,9 +34,9 @@ namespace MavenThought.Commons
         /// <param name="functor">Functor to create the exception using the message</param>
         /// <param name="message">Message to use</param>
         /// <param name="args">Args for the message</param>
-        static public void IsNotNull<T>( object obj, Func<string, T> functor, string message, params object[]args) where T : Exception
+        public static void IsNotNull<T>(object obj, Func<string, T> functor, string message, params object[] args) where T : Exception
         {
             IsTrue(obj!=null, functor, message, args);
         }
-	}
+    }
 }

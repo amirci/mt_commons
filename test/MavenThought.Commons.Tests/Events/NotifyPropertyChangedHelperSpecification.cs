@@ -10,24 +10,9 @@ namespace MavenThought.Commons.Tests.Events
         : BaseSpecification
     {
         /// <summary>
-        /// Target to use
-        /// </summary>
-        protected DummyPropertyChanged Target { get; private set; }
-
-        /// <summary>
-        /// Initialize the target
-        /// </summary>
-        protected override void GivenThat()
-        {
-            base.GivenThat();
-
-            this.Target = Mock<DummyPropertyChanged>();
-        }
-
-        /// <summary>
         /// Dummy class to use
         /// </summary>
-        public interface DummyPropertyChanged : INotifyPropertyChanged
+        public interface IDummyPropertyChanged : INotifyPropertyChanged
         {
             /// <summary>
             /// Property to raise
@@ -44,6 +29,21 @@ namespace MavenThought.Commons.Tests.Events
             /// </summary>
             /// <returns>an int</returns>
             int AnyMethod();
+        }
+
+        /// <summary>
+        /// Target to use
+        /// </summary>
+        protected IDummyPropertyChanged Target { get; private set; }
+
+        /// <summary>
+        /// Initialize the target
+        /// </summary>
+        protected override void GivenThat()
+        {
+            base.GivenThat();
+
+            this.Target = Mock<IDummyPropertyChanged>();
         }
     }
 }

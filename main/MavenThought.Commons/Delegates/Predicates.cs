@@ -7,7 +7,6 @@ namespace MavenThought.Commons.Delegates
     /// </summary>
     public partial class Predicates
     {
-
         /// <summary>
         /// Returns a binary predicate to compare equality
         /// </summary>
@@ -23,7 +22,7 @@ namespace MavenThought.Commons.Delegates
         /// Returns a unary predicate to check if an int is even
         /// </summary>
         /// <returns>result where forAll( x : result( x ) implies x is even )</returns>
-        public static Predicate<long> IsEven( ) 
+        public static Predicate<long> IsEven() 
         {
             return x => x % 2 == 0;
         }
@@ -42,11 +41,10 @@ namespace MavenThought.Commons.Delegates
         /// </summary>
         /// <typeparam name="T">Type of the predicate (IComparable)</typeparam>
         /// <returns>result where forAll( T x, T y : result( x, y ) implies x is greater than y )</returns>
-        public static Predicate<T, T> IsGreaterThan<T>() where T: IComparable<T>
+        public static Predicate<T, T> IsGreaterThan<T>() where T : IComparable<T>
         {
-            return (x, y) => x.CompareTo( y ) > 0;
+            return (x, y) => x.CompareTo(y) > 0;
         }
-
 
         /// <summary>
         /// Returns a binary predicate to check if x < y
@@ -77,7 +75,5 @@ namespace MavenThought.Commons.Delegates
         {
             return (x, y) => x.CompareTo(y) <= 0;
         }
-
-
     }
 }

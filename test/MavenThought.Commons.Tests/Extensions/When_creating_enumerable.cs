@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using MavenThought.Commons.Extensions;
 using MavenThought.Commons.Testing;
+using SharpTestsEx;
 
 namespace MavenThought.Commons.Tests.Extensions
 {
@@ -21,7 +22,7 @@ namespace MavenThought.Commons.Tests.Extensions
         [It]
         public void Should_have_the_same_elements()
         {
-            Assert.AreElementsEqual(new []{1, 2, 3, 4, 5}, this._actual);
+            this._actual.Should().Have.SameSequenceAs(new[] {1, 2, 3, 4, 5});
         }
 
         /// <summary>

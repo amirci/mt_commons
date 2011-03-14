@@ -4,25 +4,7 @@ GEM
     albacore (0.2.2)
       rake (>= 0.8.7)
       rubyzip (>= 0.9.4)
-    castle.core (2.5.1.0.20100926)
-      log4net (= 1.2.10.0)
-      nlog (= 1.0.0.505.20100822)
-    castle.windsor (2.5.1.0)
-      castle.core (= 2.5.1.0.20100926)
-    commonservicelocator (1.0.0.0)
     git (1.2.5)
-    jeweler (1.5.1)
-      bundler (~> 1.0.0)
-      git (>= 1.2.5)
-      rake
-    log4net (1.2.10.0)
-    maventhought.testing (0.2.0.0)
-    microsoft.composite (2.0.0)
-    nlog (1.0.0.505.20100822)
-    noodle (0.3.0)
-      bundler (>= 1.0.0.rc.3)
-      rake
-    nunit (2.5.7.10213.20100801)
     rake (0.8.7)
     rubyzip (0.9.4)
 
@@ -31,11 +13,4 @@ PLATFORMS
 
 DEPENDENCIES
   albacore
-  castle.windsor (~> 2.5.1)
-  commonservicelocator
   git
-  jeweler
-  maventhought.testing
-  microsoft.composite
-  noodle
-  nunit

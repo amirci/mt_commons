@@ -4,7 +4,6 @@ using System.Linq;
 using MavenThought.Commons.Extensions;
 using MavenThought.Commons.Patterns;
 
-
 namespace MavenThought.Commons
 {
     /// <summary>
@@ -125,14 +124,9 @@ namespace MavenThought.Commons
         /// </summary>
         /// <typeparam name="T">Type of the collection</typeparam>
         /// <returns>A random collection of length size</returns>
-        public IEnumerable<T> GenerateCollection<T>( int size)
+        public IEnumerable<T> GenerateCollection<T>(int size)
         {
-            var result = new List<T>();
-
-            for( var i = 0; i < size; i++)
-                result.Add( Generate<T>() );
-
-            return result;
+            return size.Times(() => Generate<T>());
         }
     }
 }

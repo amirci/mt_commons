@@ -4,7 +4,6 @@ using System.Linq;
 using MavenThought.Commons.Extensions;
 using MavenThought.Commons.Testing;
 
-
 namespace MavenThought.Commons.Tests.Extensions
 {
     /// <summary>
@@ -40,7 +39,7 @@ namespace MavenThought.Commons.Tests.Extensions
             base.GivenThat();
 
             // Select all the elements in even positions
-            this._expected = this.Collection.Where((e, i) => i%2 == 0);
+            this._expected = this.Collection.Where((e, i) => i % 2 == 0);
 
             this.Predicate = e => this._expected.Contains(e);
         }

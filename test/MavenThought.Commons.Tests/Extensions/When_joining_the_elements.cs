@@ -2,11 +2,13 @@ using System.Linq;
 using System.Text;
 using MavenThought.Commons.Extensions;
 using MavenThought.Commons.Testing;
+using MbUnit.Framework;
+using SharpTestsEx;
 
 namespace MavenThought.Commons.Tests.Extensions
 {
     /// <summary>
-    /// Specification when joinene elements
+    /// Specification when joining elements
     /// </summary>
     [Specification]
     public class When_joining_the_elements : JoinSpecification<string>
@@ -30,8 +32,8 @@ namespace MavenThought.Commons.Tests.Extensions
         /// Initializes a new instance of <see cref="When_joining_the_elements"/> class.
         /// </summary>
         /// <param name="separator">Separator to use</param>
-        [Row('|')]
-        [Row('*')]
+        [Testing.Row('|')]
+        [Testing.Row('*')]
         public When_joining_the_elements(char separator)
         {
             this._separator = separator;
@@ -43,7 +45,7 @@ namespace MavenThought.Commons.Tests.Extensions
         [It]
         public void Should_join_all_the_elements()
         {
-            Assert.AreEqual(this._expected, this._actual, "The join should match");
+            this._actual.Should().Be(this._expected);
         }
 
         /// <summary>
@@ -53,13 +55,16 @@ namespace MavenThought.Commons.Tests.Extensions
         {
             base.GivenThat();
 
-            var builder = new StringBuilder();
-
-            this.Collection.Head().ForEach(x => builder.Append(x + this._separator));
-
-            builder.Append(this.Collection.Last());
-
-            this._expected = builder.ToString();
+            this._expected = this.Collection
+                .Head()
+                .Aggregate(new StringBuilder(), (b, x) =>
+                                                    {
+                                                        b.Append(x);
+                                                        b.Append(this._separator);
+                                                        return b;
+                                                    })
+                .Append(this.Collection.Last())
+                .ToString();
         }
 
         /// <summary>

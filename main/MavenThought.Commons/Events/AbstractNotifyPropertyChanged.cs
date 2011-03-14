@@ -21,7 +21,7 @@ namespace MavenThought.Commons.Events
         /// <param name="propertyName">
         /// the property name to check
         /// </param>
-        internal protected void OnPropertyChanged(string propertyName)
+        protected internal void OnPropertyChanged(string propertyName)
         {
             this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -31,7 +31,7 @@ namespace MavenThought.Commons.Events
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="property"></param>
-        internal protected void OnPropertyChanged<T>(Expression<Func<T>> property)
+        protected internal void OnPropertyChanged<T>(Expression<Func<T>> property)
         {
             this.PropertyChanged(this, property.CreateChangeEventArgs());
         }
@@ -44,7 +44,7 @@ namespace MavenThought.Commons.Events
         /// <param name="field">Field to store the value</param>
         /// <param name="newValue"></param>
         /// <returns></returns>
-        internal protected bool NotifyPropertyChanged<T>(Expression<Func<T>> property, ref T field, T newValue)
+        protected internal bool NotifyPropertyChanged<T>(Expression<Func<T>> property, ref T field, T newValue)
         {
             var changed = typeof(T).IsValueType ? !Equals(field, newValue) : !ReferenceEquals(field, newValue);
 
@@ -71,7 +71,7 @@ namespace MavenThought.Commons.Events
         /// <param name="newValue">
         /// New value for the property
         /// </param>
-        internal protected bool NotifyPropertyChanged<T>(string propertyName, ref T property, T newValue)
+        protected internal bool NotifyPropertyChanged<T>(string propertyName, ref T property, T newValue)
         {
             var changed = typeof(T).IsValueType ? !Equals(property, newValue) : !ReferenceEquals(property, newValue);
 

@@ -1,7 +1,6 @@
 using System;
 using MavenThought.Commons.Testing;
 
-
 namespace MavenThought.Commons.Tests.Extensions
 {
     /// <summary>
@@ -31,6 +30,5 @@ namespace MavenThought.Commons.Tests.Extensions
 
             this.Predicate = x => false;
         }
-        
     }
 }

@@ -1,6 +1,5 @@
 using MavenThought.Commons.Testing;
 
-
 namespace MavenThought.Commons.Tests
 {
     /// <summary>

@@ -1,12 +1,13 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using MavenThought.Commons.Extensions;
-using MavenThought.Commons.Testing;
-
+using SharpTestsEx;
 
 namespace MavenThought.Commons.Tests.Extensions
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Commons.Extensions;
+    using Testing;
+
     /// <summary>
     /// Specification when slice is called with valid parameters
     /// </summary>
@@ -32,14 +33,17 @@ namespace MavenThought.Commons.Tests.Extensions
         private int _maxBoundary;
 
         /// <summary>
+        /// Expected result
+        /// </summary>
+        private IEnumerable<T> _expected;
+
+        /// <summary>
         /// Tests that the slice operation returns the elements between start and end
         /// </summary>
         [It]
         public void Should_return_the_elements_between_min_and_max()
         {
-            var expected = this.Collection.Where((e, i) => i.Between(this._minBoundary, this._maxBoundary));
-
-            Assert.AreElementsEqual(expected, this._actual);
+            this._actual.Should().Have.SameSequenceAs(this._expected);
         }
 
         /// <summary>
@@ -50,7 +54,10 @@ namespace MavenThought.Commons.Tests.Extensions
             base.GivenThat();
 
             this._minBoundary = 3;
+            
             this._maxBoundary = 80;
+
+            _expected = this.Collection.Where((e, i) => i.Between(this._minBoundary, this._maxBoundary));
         }
 
         /// <summary>

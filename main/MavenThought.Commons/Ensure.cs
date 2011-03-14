@@ -9,6 +9,16 @@ namespace MavenThought.Commons
     public static partial class Ensure
     {
         /// <summary>
+        /// Default exception to throw
+        /// </summary>
+        public static Func<string, Exception> DefaultExceptionFunctor { get; set; }
+
+        /// <summary>
+        /// Default message when is true fails
+        /// </summary>
+        public static string DefaultIsTrueMessage { get; set; }
+
+        /// <summary>
         /// Ensures that the condition is true
         /// </summary>
         /// <param name="condition">Condition to check</param>
@@ -47,7 +57,7 @@ namespace MavenThought.Commons
         public static void IsTrue<T>(bool condition, Func<T> functor) where T : Exception
         {
             // The message does not matter
-            IsTrue(condition, s => functor(), "");
+            IsTrue(condition, s => functor(), string.Empty);
         }
 
         /// <summary>
@@ -67,16 +77,6 @@ namespace MavenThought.Commons
                 throw functor(fmsg);
             }
         }
-
-        /// <summary>
-        /// Default exception to throw
-        /// </summary>
-        public static Func<string, Exception> DefaultExceptionFunctor { get; set; }
-
-        /// <summary>
-        /// Default message when is true fails
-        /// </summary>
-        public static string DefaultIsTrueMessage { get; set; }
 
         /// <summary>
         /// Default values intialization

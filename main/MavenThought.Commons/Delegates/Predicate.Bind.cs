@@ -1,6 +1,4 @@
 ﻿using System;
-using MavenThought.Commons.Delegates;
-
 
 namespace MavenThought.Commons.Delegates
 {
@@ -14,7 +12,7 @@ namespace MavenThought.Commons.Delegates
         /// <param name="pred"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static Predicate<T1> Bind<T1, T2>( this Predicate<T1, T2> pred, T2 value)
+        public static Predicate<T1> Bind<T1, T2>(this Predicate<T1, T2> pred, T2 value)
         {
             return x => pred(x, value);
         }
