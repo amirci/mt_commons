@@ -1,11 +1,9 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    albacore (0.2.2)
-      rake (>= 0.8.7)
-      rubyzip (>= 0.9.4)
+    albacore (0.2.4)
+      rubyzip (= 0.9.4)
     git (1.2.5)
-    rake (0.8.7)
     rubyzip (0.9.4)
 
 PLATFORMS
