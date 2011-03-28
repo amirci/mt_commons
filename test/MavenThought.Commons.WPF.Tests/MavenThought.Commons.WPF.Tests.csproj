@@ -71,6 +71,7 @@
     <Compile Include="Events\EventHandlersSpecification.cs" />
     <Compile Include="Events\IDontKnowEvent.cs" />
     <Compile Include="Events\IDontKnowHandler.cs" />
+    <Compile Include="Events\ServiceLocatorEventSubscriptionSpecification.cs" />
     <Compile Include="Events\When_event_aggregator_subscribes_an_action.cs">
       <DependentUpon>EventAggregatorSpecification.cs</DependentUpon>
     </Compile>
@@ -94,6 +95,9 @@
     </Compile>
     <Compile Include="Events\When_finding_handlers_with_service_locator.cs">
       <DependentUpon>EventHandlersSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Events\When_service_locator_event_subscription_invokes_handler.cs">
+      <DependentUpon>ServiceLocatorEventSubscriptionSpecification.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Events\TransientEventSubscriptionSpecification.cs" />

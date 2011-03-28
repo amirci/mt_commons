@@ -30,7 +30,7 @@ namespace MavenThought.Commons.WPF.Events
         /// <returns>Instance of the handler to use</returns>
         protected override object CreateHandler()
         {
-            return null;
+            return this._serviceLocator.GetInstance(this.HandlerType);
         }
     }
 }
