@@ -13,35 +13,17 @@ namespace MavenThought.Commons.WPF.Events
         /// </summary>
         /// <param name="handlerType">Type of the handler to be instantiated</param>
         public TransientEventSubscription(Type handlerType)
+            :base(handlerType)
         {
-            this.HandlerType = handlerType;
         }
 
         /// <summary>
-        /// Gets the type of the handler
+        /// Creates the instance of the handler
         /// </summary>
-        public Type HandlerType { get; private set; }
-
-        /// <summary>
-        /// Invoke the event
-        /// </summary>
-        /// <param name="event"></param>
-        public override void Invoke(object @event)
+        /// <returns>Instance of the handler to use</returns>
+        protected override object CreateHandler()
         {
-            // If can't tell the type of the event, return
-            if (@event == null)
-            {
-                return;
-            }
-
-            var handler = Activator.CreateInstance(this.HandlerType);
-
-            var method = this.HandlerType.GetMethod("Handle", new[] {@event.GetType()});
-
-            if (method != null)
-            {
-                method.Invoke(handler, new[] {@event});
-            }
+            return Activator.CreateInstance(this.HandlerType);
         }
     }
 }

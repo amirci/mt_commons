@@ -41,6 +41,9 @@
     <Reference Include="MbUnit, Version=3.2.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
       <HintPath>..\..\packages\gallio.3.2.601\lib\MbUnit.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="Rhino.Mocks">
       <HintPath>..\..\packages\RhinoMocks.3.6\lib\Rhino.Mocks.dll</HintPath>
     </Reference>
@@ -89,6 +92,9 @@
     <Compile Include="Events\When_transient_event_subscription_invokes_handler.cs">
       <DependentUpon>TransientEventSubscriptionSpecification.cs</DependentUpon>
     </Compile>
+    <Compile Include="Events\When_finding_handlers_with_service_locator.cs">
+      <DependentUpon>EventHandlersSpecification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Events\TransientEventSubscriptionSpecification.cs" />
   </ItemGroup>
@@ -105,6 +111,9 @@
       <Project>{00D9152A-8DD5-4D57-BCC8-0DEF815790BC}</Project>
       <Name>MavenThought.Commons.WPF.DummyData</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,7 +6,7 @@ namespace MavenThought.Commons.WPF.Events
     /// Subscription with an action
     /// </summary>
     /// <typeparam name="T">Type of the event</typeparam>
-    internal class ActionEventSubscription<T> : BaseEventSubscription where T : IEvent
+    internal class ActionEventSubscription<T> : IEventSubscription where T : IEvent
     {
         /// <summary>
         /// Handler to call
@@ -26,7 +26,7 @@ namespace MavenThought.Commons.WPF.Events
         /// Invoke the event
         /// </summary>
         /// <param name="event"></param>
-        public override void Invoke(object @event)
+        public void Invoke(object @event)
         {
             if (@event is T)
             {
