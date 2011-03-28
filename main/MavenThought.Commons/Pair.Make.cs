@@ -17,5 +17,27 @@ namespace MavenThought.Commons
         {
             return new Pair<TFirst, TSecond>(first, second);
         }
+
+        /// <summary>
+        /// Creates the pair first x null
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="first"></param>
+        /// <returns></returns>
+        public static IPair<T, T> MakeFirst<T>(T first)
+        {
+            return Make(first, default(T));
+        }
+
+        /// <summary>
+        /// Creates the pair null x second
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="second"></param>
+        /// <returns></returns>
+        public static IPair<T, T> MakeSecond<T>(T second)
+        {
+            return Make(default(T), second);
+        }
     }
 }

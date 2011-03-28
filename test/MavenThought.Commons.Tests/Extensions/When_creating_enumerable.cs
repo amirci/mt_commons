@@ -22,7 +22,7 @@ namespace MavenThought.Commons.Tests.Extensions
         [It]
         public void Should_have_the_same_elements()
         {
-            this._actual.Should().Have.SameSequenceAs(new[] {1, 2, 3, 4, 5});
+            this._actual.Should().Have.SameSequenceAs(new[] { 1, 2, 3, 4, 5 });
         }
 
         /// <summary>

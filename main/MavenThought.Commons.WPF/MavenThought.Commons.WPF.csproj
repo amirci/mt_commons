@@ -82,8 +82,12 @@
     </Compile>
     <Compile Include="Events\AutoPropertyStub.cs" />
     <Compile Include="Events\EventAggregator.cs" />
+    <Compile Include="Events\EventHandlers.cs" />
+    <Compile Include="Events\SimpleEventHandlerSubscription.cs" />
     <Compile Include="Events\IEvent.cs" />
     <Compile Include="Events\IEventAggregator.cs" />
+    <Compile Include="Events\IEventHandlerSource.cs" />
+    <Compile Include="Events\IEventHandlerSubscription.cs" />
     <Compile Include="Events\IEventSubscription.cs" />
     <Compile Include="Events\IEventSubscriber.cs" />
     <Compile Include="Events\IHandleEvents.cs" />

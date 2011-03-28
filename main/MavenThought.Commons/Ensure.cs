@@ -9,6 +9,15 @@ namespace MavenThought.Commons
     public static partial class Ensure
     {
         /// <summary>
+        /// Default values intialization
+        /// </summary>
+        static Ensure()
+        {
+            DefaultExceptionFunctor = s => new EnsureException(s);
+            DefaultIsTrueMessage = "The condition specified is not true";
+        }
+
+        /// <summary>
         /// Default exception to throw
         /// </summary>
         public static Func<string, Exception> DefaultExceptionFunctor { get; set; }
@@ -76,15 +85,6 @@ namespace MavenThought.Commons
                 var fmsg = string.Format(CultureInfo.CurrentCulture, message, args);
                 throw functor(fmsg);
             }
-        }
-
-        /// <summary>
-        /// Default values intialization
-        /// </summary>
-        static Ensure()
-        {
-            DefaultExceptionFunctor = s => new EnsureException(s);
-            DefaultIsTrueMessage = "The condition specified is not true";
         }
     }
 }

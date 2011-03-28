@@ -130,8 +130,7 @@ namespace :publish do
 	   nuspec.projectUrl = "https://github.com/amirci/mt_commons"
 	   nuspec.working_directory = "nuget"
 	   nuspec.output_file = "#{args.package_id}.#{version}.nuspec"
-	   nuspec.tags = "testing automocking givenwhenthen"
-	   nuspec.dependency "maventhought.testing", "0.3.3"
+	   nuspec.tags = "patterns enumerable extensions"
 	   nuspec.dependency "castle.core", "2.5.1"
 	end
 	

@@ -44,6 +44,9 @@
     <Reference Include="Rhino.Mocks">
       <HintPath>..\..\packages\RhinoMocks.3.6\lib\Rhino.Mocks.dll</HintPath>
     </Reference>
+    <Reference Include="SharpTestsEx">
+      <HintPath>..\..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.dll</HintPath>
+    </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\..\packages\structuremap.2.6.2\lib\StructureMap.dll</HintPath>
     </Reference>
@@ -58,8 +61,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\AbstractDontKnowHandler.cs" />
+    <Compile Include="Events\DontKnowHandlerImpl.cs" />
+    <Compile Include="Events\DontKnowHandlerWithoutDefaultConstructor.cs" />
     <Compile Include="Events\EventAggregatorSpecification.cs" />
+    <Compile Include="Events\EventHandlersSpecification.cs" />
     <Compile Include="Events\IDontKnow.cs" />
+    <Compile Include="Events\IDontKnowHandler.cs" />
     <Compile Include="Events\When_event_aggregator_subscribes_an_action.cs">
       <DependentUpon>EventAggregatorSpecification.cs</DependentUpon>
     </Compile>
@@ -68,6 +76,12 @@
     </Compile>
     <Compile Include="Events\When_event_aggregator_raises_an_event_with_no_listeners.cs">
       <DependentUpon>EventAggregatorSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Events\When_finding_handlers_from_current_assembly.cs">
+      <DependentUpon>EventHandlersSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Events\When_finding_handlers_from_other_assemblies.cs">
+      <DependentUpon>EventHandlersSpecification.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,6 +93,10 @@
     <ProjectReference Include="..\..\main\MavenThought.Commons\MavenThought.Commons.csproj">
       <Project>{4CCEA239-252A-49D8-8BC0-2673AEE5FDE6}</Project>
       <Name>MavenThought.Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MavenThought.Commons.WPF.DummyData\MavenThought.Commons.WPF.DummyData.csproj">
+      <Project>{00D9152A-8DD5-4D57-BCC8-0DEF815790BC}</Project>
+      <Name>MavenThought.Commons.WPF.DummyData</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

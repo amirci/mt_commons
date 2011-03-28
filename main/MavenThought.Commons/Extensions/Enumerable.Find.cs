@@ -93,30 +93,21 @@ namespace MavenThought.Commons.Extensions
         /// </summary>
         /// <typeparam name="T">Type of the element</typeparam>
         /// <param name="collection">Collection to search</param>
-        /// <param name="predicate">Predicate to satisfy</param>
+        /// <param name="pred">Predicate to satisfy</param>
         /// <returns>
-        /// An element e where the next element in the collection satisfies the predicate 
-        /// or null if the first element satisfies the predicate or 
-        /// if there is not element that satisfies the condition
+        /// A pair e1 x e2 where:
+        /// - e1 is null if the first element in the collection satisfies the predicate
+        /// - e2 satisfies the predicate and e1 is the previous element in the collection
+        /// - null if no element satisfies the predicate
         /// </returns>
-        public static IPair<T, T> FindPrevious<T>(this IEnumerable<T> collection, Predicate<T> predicate)
+        public static IPair<T, T> FindPrevious<T>(this IEnumerable<T> collection, Predicate<T> pred)
         {
-            var cursor = collection.GetEnumerator();
+            Func<IPair<T, T>, IPair<T, T>> choosePair = r => pred(r.Second) ? r : Pair.MakeSecond(r.First);
 
-            Pair<T, T> result = null;
-
-            // Has more than one element
-            if (cursor.MoveNext())
-            {
-                result = new Pair<T, T>(default(T), cursor.Current);
-
-                while (cursor.MoveNext() && !predicate(result.Second))
-                {
-                    result = new Pair<T, T>(result.Second, cursor.Current);
-                }
-            }
-
-            return result == null ? result : predicate(result.Second) ? result : null;
+            return collection
+                .ToPairs()
+                .Find(pair => pred(pair.First) || pred(pair.Second))
+                .WhenNotNull(choosePair);
         }
     }
 }

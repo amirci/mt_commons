@@ -99,14 +99,14 @@ namespace MavenThought.Commons.WPF.Events
         /// <returns>A new proxy for the event</returns>
         private T CreateProxy<T>()
         {
-            return (T) _generator
-                           .CreateInterfaceProxyWithoutTarget(typeof(T),
-                                                              new IInterceptor[]
-                                                                  {
-                                                                      new AutoPropertyStub()
-                                                                  });
+            var interceptors = new IInterceptor[]
+                                   {
+                                       new AutoPropertyStub()
+                                   };
+
+            return (T) _generator.CreateInterfaceProxyWithoutTarget(typeof(T), interceptors);
         }
-        
+
         /// <summary>
         /// Subscription with an action
         /// </summary>

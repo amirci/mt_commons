@@ -84,6 +84,7 @@
       <DependentUpon>Predicate.cs</DependentUpon>
     </Compile>
     <Compile Include="Delegates\Predicate.cs" />
+    <Compile Include="Extensions\Conditionals.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
