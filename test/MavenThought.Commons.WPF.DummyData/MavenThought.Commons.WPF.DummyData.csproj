@@ -44,7 +44,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\main\MavenThought.Commons.WPF\MavenThought.Commons.WPF.csproj">
+    <ProjectReference Include="..\..\main\MavenThought.Commons.WPF\MavenThought.Commons.WPF.csproj">
       <Project>{8F012F85-8013-42C3-B59A-15566B039119}</Project>
       <Name>MavenThought.Commons.WPF</Name>
     </ProjectReference>

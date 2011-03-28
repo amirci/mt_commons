@@ -94,7 +94,7 @@
       <Project>{4CCEA239-252A-49D8-8BC0-2673AEE5FDE6}</Project>
       <Name>MavenThought.Commons</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MavenThought.Commons.WPF.DummyData\MavenThought.Commons.WPF.DummyData.csproj">
+    <ProjectReference Include="..\MavenThought.Commons.WPF.DummyData\MavenThought.Commons.WPF.DummyData.csproj">
       <Project>{00D9152A-8DD5-4D57-BCC8-0DEF815790BC}</Project>
       <Name>MavenThought.Commons.WPF.DummyData</Name>
     </ProjectReference>
