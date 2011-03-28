@@ -2,10 +2,7 @@
 
 namespace MavenThought.Commons.WPF.DummyData
 {
-    /// <summary>
-    /// Handler for tests
-    /// </summary>
-    public class DummyEventHandler : IHandleEventsOfType<IDummyEvent>
+    public abstract class DummyEventHandlerBase
     {
         /// <summary>
         /// Method to be called when the event is risen
@@ -14,5 +11,12 @@ namespace MavenThought.Commons.WPF.DummyData
         public void Handle(IDummyEvent @event)
         {
         }
+    }
+
+    /// <summary>
+    /// Handler for tests
+    /// </summary>
+    public class DummyEventHandler : DummyEventHandlerBase, IHandleEventsOfType<IDummyEvent>
+    {
     }
 }

@@ -39,7 +39,7 @@ namespace MavenThought.Commons.WPF.Events
             /// <returns>A collection of event handlers that live in the assembly</returns>
             public IEnumerable<IEventHandlerSubscription> AssemblyOf<T>() where T : class
             {
-                return System.Linq.Enumerable.Empty<IEventHandlerSubscription>();
+                return AssemblyOf(typeof(T));
             }
 
             /// <summary>
@@ -49,7 +49,7 @@ namespace MavenThought.Commons.WPF.Events
             /// <returns>A collection of event handlers that live in the assembly</returns>
             public IEnumerable<IEventHandlerSubscription> AssemblyOf(Type type)
             {
-                return System.Linq.Enumerable.Empty<IEventHandlerSubscription>();
+                return Assembly(type.Assembly);
             }
 
             /// <summary>
