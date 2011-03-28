@@ -19,10 +19,11 @@ namespace MavenThought.Commons.WPF.Tests.Events
         public void Should_find_all_the_handlers_with_default_constructor_in_the_assembly()
         {
             this.Actual
-                .Select(sub => sub.Target)
+                .Cast<TransientEventSubscription>()
+                .Select(sub => sub.HandlerType)
                 .Should()
                 .Have
-                .SameSequenceAs(new[] {typeof (DontKnowHandlerImpl)});
+                .SameValuesAs(new[] {typeof(MockHandler), typeof (DontKnowHandlerImpl)});
         }
 
         /// <summary>

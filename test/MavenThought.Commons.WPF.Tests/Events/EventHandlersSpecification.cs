@@ -10,6 +10,6 @@ namespace MavenThought.Commons.WPF.Tests.Events
     public abstract class EventHandlersSpecification
         : BaseSpecification
     {
-        protected IEnumerable<IEventHandlerSubscription> Actual { get; set; }
+        protected IEnumerable<IEventSubscription> Actual { get; set; }
     }
 }

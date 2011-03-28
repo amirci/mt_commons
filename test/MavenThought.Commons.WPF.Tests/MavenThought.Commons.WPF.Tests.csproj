@@ -66,7 +66,7 @@
     <Compile Include="Events\DontKnowHandlerWithoutDefaultConstructor.cs" />
     <Compile Include="Events\EventAggregatorSpecification.cs" />
     <Compile Include="Events\EventHandlersSpecification.cs" />
-    <Compile Include="Events\IDontKnow.cs" />
+    <Compile Include="Events\IDontKnowEvent.cs" />
     <Compile Include="Events\IDontKnowHandler.cs" />
     <Compile Include="Events\When_event_aggregator_subscribes_an_action.cs">
       <DependentUpon>EventAggregatorSpecification.cs</DependentUpon>
@@ -83,7 +83,14 @@
     <Compile Include="Events\When_finding_handlers_from_other_assemblies.cs">
       <DependentUpon>EventHandlersSpecification.cs</DependentUpon>
     </Compile>
+    <Compile Include="Events\When_event_agregator_subscribes_subscription_collection.cs">
+      <DependentUpon>EventAggregatorSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Events\When_transient_event_subscription_invokes_handler.cs">
+      <DependentUpon>TransientEventSubscriptionSpecification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Events\TransientEventSubscriptionSpecification.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\main\MavenThought.Commons.WPF\MavenThought.Commons.WPF.csproj">

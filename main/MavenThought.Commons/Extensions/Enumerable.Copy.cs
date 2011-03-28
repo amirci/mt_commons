@@ -8,6 +8,20 @@ namespace MavenThought.Commons.Extensions
     public static partial class Enumerable
     {
         /// <summary>
+        /// Copies the values of the collection to the target
+        /// </summary>
+        /// <typeparam name="T">Type of the collection</typeparam>
+        /// <param name="collection">Source</param>
+        /// <param name="result">Target</param>
+        /// <returns>The taret collection</returns>
+        public static IEnumerable<T> Copy<T>(this IEnumerable<T> collection, ICollection<T> result)
+        {
+            collection.ForEach(result.Add);
+
+            return result;
+        }
+        
+        /// <summary>
         /// Copies the elements of the collection that satisfy the predicate
         /// </summary>
         /// <typeparam name="T">Type of the collection to copy</typeparam>

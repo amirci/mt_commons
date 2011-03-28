@@ -27,7 +27,7 @@ namespace MavenThought.Commons.WPF.Events
             /// <summary>
             /// Gets the collection of registrations in current assembly
             /// </summary>
-            public IEnumerable<IEventHandlerSubscription> CurrentAssembly()
+            public IEnumerable<IEventSubscription> CurrentAssembly()
             {
                 return Assembly(System.Reflection.Assembly.GetCallingAssembly());
             }
@@ -37,7 +37,7 @@ namespace MavenThought.Commons.WPF.Events
             /// </summary>
             /// <typeparam name="T">Type to find the assembly</typeparam>
             /// <returns>A collection of event handlers that live in the assembly</returns>
-            public IEnumerable<IEventHandlerSubscription> AssemblyOf<T>() where T : class
+            public IEnumerable<IEventSubscription> AssemblyOf<T>() where T : class
             {
                 return AssemblyOf(typeof(T));
             }
@@ -47,7 +47,7 @@ namespace MavenThought.Commons.WPF.Events
             /// </summary>
             /// <param name="type">Type to find the assembly</param>
             /// <returns>A collection of event handlers that live in the assembly</returns>
-            public IEnumerable<IEventHandlerSubscription> AssemblyOf(Type type)
+            public IEnumerable<IEventSubscription> AssemblyOf(Type type)
             {
                 return Assembly(type.Assembly);
             }
@@ -57,9 +57,9 @@ namespace MavenThought.Commons.WPF.Events
             /// </summary>
             /// <param name="assembly">Assembly to use</param>
             /// <returns>A collection of event handlers that live in the assembly</returns>
-            public IEnumerable<IEventHandlerSubscription> Assembly(Assembly assembly)
+            public IEnumerable<IEventSubscription> Assembly(Assembly assembly)
             {
-                Predicate<Type> canHandleEvents = t => typeof(IHandleEvents).IsAssignableFrom(t);
+                Predicate<Type> canHandleEvents = t => t.GetInterfaces().Exists(i => i.Name.StartsWith("IHandleEventsOfType"));
 
                 Predicate<Type> canBeInstantiated = t =>
                                                     {
@@ -74,8 +74,8 @@ namespace MavenThought.Commons.WPF.Events
                 return assembly
                     .GetTypes()
                     .Where(t => canHandleEvents(t) && canBeInstantiated(t))
-                    .Select(t => new SimpleEventHandlerSubscription(t))
-                    .Cast<IEventHandlerSubscription>();
+                    .Select(t => new TransientEventSubscription(t))
+                    .Cast<IEventSubscription>();
             }
         }
     }

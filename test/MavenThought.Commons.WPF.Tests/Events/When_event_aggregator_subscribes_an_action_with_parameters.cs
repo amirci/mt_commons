@@ -16,7 +16,7 @@ namespace MavenThought.Commons.WPF.Tests.Events
         /// <summary>
         /// Handler to be registered
         /// </summary>
-        private IEnumerable<Action<IDontKnow>> _handlers;
+        private IEnumerable<Action<IDontKnowEvent>> _handlers;
 
         /// <summary>
         /// Checks that the handler is called
@@ -24,10 +24,10 @@ namespace MavenThought.Commons.WPF.Tests.Events
         [It]
         public void Should_call_the_handler()
         {
-            var sameIdk = new Func<IDontKnow, bool>(idk => idk.Name == "Test" && idk.Id == 504);
+            var sameIdk = new Func<IDontKnowEvent, bool>(idk => idk.Name == "Test" && idk.Id == 504);
 
             this._handlers
-                .ForEach(h => h.AssertWasCalled(handler => handler(Arg<IDontKnow>.Matches(x => sameIdk(x)))));
+                .ForEach(h => h.AssertWasCalled(handler => handler(Arg<IDontKnowEvent>.Matches(x => sameIdk(x)))));
         }
         
         /// <summary>
@@ -37,7 +37,7 @@ namespace MavenThought.Commons.WPF.Tests.Events
         {
             base.AndGivenThatAfterCreated();
 
-            this._handlers = 10.Times(() => Mock<Action<IDontKnow>>());
+            this._handlers = 10.Times(() => Mock<Action<IDontKnowEvent>>());
 
             this._handlers.ForEach(h => this.Sut.Subscribe(h));
         }
@@ -47,7 +47,7 @@ namespace MavenThought.Commons.WPF.Tests.Events
         /// </summary>
         protected override void WhenIRun()
         {
-            this.Sut.Raise<IDontKnow>(ev =>
+            this.Sut.Raise<IDontKnowEvent>(ev =>
                                            {
                                                ev.Name = "Test";
                                                ev.Id = 504;

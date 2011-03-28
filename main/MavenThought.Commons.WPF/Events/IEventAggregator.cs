@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MavenThought.Commons.WPF.Events
 {
@@ -12,7 +13,13 @@ namespace MavenThought.Commons.WPF.Events
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="action"></param>
-        IHandleEventsOfType<T> Subscribe<T>(Action<T> action) where T : IEvent;
+        IEventSubscription Subscribe<T>(Action<T> action) where T : IEvent;
+
+        /// <summary>
+        /// Register event subcriptions
+        /// </summary>
+        /// <param name="subscriptions">The subscriptions to register</param>
+        void Subscribe(IEnumerable<IEventSubscription> subscriptions);
 
         /// <summary>
         /// Raises an event and notified to all the subscribers

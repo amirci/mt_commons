@@ -16,7 +16,7 @@ namespace MavenThought.Commons.WPF.Tests.Events
         /// <summary>
         /// Handler to be registered
         /// </summary>
-        private IEnumerable<Action<IDontKnow>> _handlers;
+        private IEnumerable<Action<IDontKnowEvent>> _handlers;
 
         /// <summary>
         /// Checks that the handler is not called
@@ -25,7 +25,7 @@ namespace MavenThought.Commons.WPF.Tests.Events
         public void Should_not_call_the_handler()
         {
             this._handlers
-                .ForEach(h => h.AssertWasNotCalled(handler => handler(Arg<IDontKnow>.Is.Anything)));
+                .ForEach(h => h.AssertWasNotCalled(handler => handler(Arg<IDontKnowEvent>.Is.Anything)));
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace MavenThought.Commons.WPF.Tests.Events
         {
             base.GivenThat();
 
-            this._handlers = 10.Times(() => Mock<Action<IDontKnow>>());
+            this._handlers = 10.Times(() => Mock<Action<IDontKnowEvent>>());
         }
 
         /// <summary>

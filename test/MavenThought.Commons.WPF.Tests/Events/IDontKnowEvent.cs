@@ -5,7 +5,7 @@ namespace MavenThought.Commons.WPF.Tests.Events
     /// <summary>
     /// Event to use
     /// </summary>
-    public interface IDontKnow : IEvent
+    public interface IDontKnowEvent : IEvent
     {
         string Name { get; set; }
 
