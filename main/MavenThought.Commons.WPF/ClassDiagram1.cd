@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Interface Name="MavenThought.Commons.WPF.Events.IEvent">
+    <Position X="6.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Events\IEvent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MavenThought.Commons.WPF.Events.IEventAggregator">
+    <Position X="3.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Events\IEventAggregator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MavenThought.Commons.WPF.Events.IHandleEventsOfType&lt;T&gt;">
+    <Position X="6.5" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Events\IHandleEventsOfType.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MavenThought.Commons.WPF.Events.IEventSubscription">
+    <Position X="3.5" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Events\IEventSubscription.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
