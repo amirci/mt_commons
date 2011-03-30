@@ -22,8 +22,6 @@ CLEAN.include("main/**/bin", "main/**/obj", "test/**/obj", "test/**/bin", "gem/l
 
 CLOBBER.include("**/_*", "**/.svn", "packages/*", "lib/*", "**/*.user", "**/*.cache", "**/*.suo")
 
-msbuild_path = File.join(ENV['windir'], 'Microsoft.NET','Framework',  'v4.0.30319', 'MSBuild.exe')
-
 desc 'Default build'
 task :default => ["build:all"]
 
