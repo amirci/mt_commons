@@ -47,19 +47,13 @@ namespace MavenThought.Commons.WPF.Events
         {
             Predicate<Type> canHandleEvents = t => t.GetInterfaces().Exists(i => i.Name.StartsWith("IHandleEventsOfType"));
 
-            Predicate<Type> canBeInstantiated = t =>
-                                                    {
-                                                        var ctrs = t.GetConstructors();
+            Predicate<Type> canBeInstantiated = t => t.IsClass && !t.IsAbstract;
 
-                                                        return t.IsClass &&
-                                                               !t.IsAbstract &&
-                                                               (ctrs.IsEmpty() ||
-                                                                ctrs.Exists(c => c.GetParameters().IsEmpty()));
-                                                    };
+            var types = assembly
+                .GetTypes()
+                .Where(t => canHandleEvents(t) && canBeInstantiated(t));
 
-            return new TransientSubscriptionCollection(assembly
-                                        .GetTypes()
-                                        .Where(t => canHandleEvents(t) && canBeInstantiated(t)));
+            return new TransientSubscriptionCollection(types);
         }
     }
 }

@@ -10,7 +10,9 @@ In order to compile:
 * Run: rake (should build)
 * Run: rake test (should run all the tests)
 
-Releases:
+Log:
+
+0.9.4: Fixed event aggregator issue with default constructors
 
 0.9.3: Added Event Aggregator patterns
 

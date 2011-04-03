@@ -141,6 +141,12 @@ namespace :publish do
 	end
 end
 
+namespace :version do
+	task :show do 
+		puts "Current version is: #{version}"
+	end
+end
+
 namespace :util do
 	task :clean_folder, :folder do |t, args|
 		rm_rf(args.folder)

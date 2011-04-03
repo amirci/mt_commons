@@ -81,9 +81,6 @@
     <Compile Include="Events\When_event_aggregator_raises_an_event_with_no_listeners.cs">
       <DependentUpon>EventAggregatorSpecification.cs</DependentUpon>
     </Compile>
-    <Compile Include="Events\When_finding_handlers_from_current_assembly.cs">
-      <DependentUpon>EventHandlersSpecification.cs</DependentUpon>
-    </Compile>
     <Compile Include="Events\When_finding_handlers_from_other_assemblies.cs">
       <DependentUpon>EventHandlersSpecification.cs</DependentUpon>
     </Compile>
@@ -92,9 +89,6 @@
     </Compile>
     <Compile Include="Events\When_transient_event_subscription_invokes_handler.cs">
       <DependentUpon>TransientEventSubscriptionSpecification.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Events\When_finding_handlers_with_service_locator.cs">
-      <DependentUpon>EventHandlersSpecification.cs</DependentUpon>
     </Compile>
     <Compile Include="Events\When_service_locator_event_subscription_invokes_handler.cs">
       <DependentUpon>ServiceLocatorEventSubscriptionSpecification.cs</DependentUpon>
