@@ -140,8 +140,8 @@ namespace :publish do
 	   nuspec.working_directory = "nuget"
 	   nuspec.output_file = "#{args.package_id}.#{version}.nuspec"
 	   nuspec.tags = "patterns enumerable extensions"
-	   nuspec.dependency "castle.core", "2.5.1" unless args.package_id == "*WPF"
-	   nuspec.dependency "MavenThought.commons", "0.9.5" unless args.package_id == "*WPF"
+	   nuspec.dependency "castle.core", "2.5.1" if args.package_id =~ /WPF/
+	   nuspec.dependency "MavenThought.commons", "0.9.5" if args.package_id =~ /WPF/
 	end
 	
 	nugetpack :package, :package_id do |p, args|
