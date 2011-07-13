@@ -1,8 +1,8 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    albacore (0.2.4)
-      rubyzip (= 0.9.4)
+    albacore (0.2.7)
+      rubyzip (~> 0.9)
     git (1.2.5)
     rubyzip (0.9.4)
 

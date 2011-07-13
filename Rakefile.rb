@@ -105,16 +105,27 @@ end
 
 namespace :publish do
 	
-	desc "Publish nuget package"
+	nuget_lib = "nuget/lib"
+	
+	desc "Publish nuget packages"
 	task :nuget  => ["util:build_release"] do
-		nuget_lib = "nuget/lib"
-		Rake::Task["util:clean_folder"].invoke("nuget")
+		nuget_p = Rake::Task["publish:nuget_p"]
+		nuget_p.invoke("main/MavenT*Commons/bin/release/MavenT*.Commons.dll", "maventhought.commons")
+		nuget_p.reenable
+		nuget_p.invoke("main/MavenT*WPF/bin/release/MavenT*WPF.dll", "maventhought.commons.wpf")
+	end 
+
+	task :nuget_p, [:files, :package_id] do |t, args|
+		clean_folder = Rake::Task["util:clean_folder"]
+		clean_folder.reenable
+		clean_folder.invoke("nuget")
 		mkdir nuget_lib
-		FileList["main/**/bin/release/MavenT*.dll"].each { |f| cp f, nuget_lib }
-		nuget_package = "maventhought.commons"
+		FileList[args.files].each { |f| cp f, nuget_lib }
+		nuget_package = args.package_id
+		Rake::Task["publish:package"].reenable
 		Rake::Task["publish:package"].invoke(nuget_package)
 		sh "nuget push nuget/#{nuget_package}.#{version}.nupkg" 
-	end 
+	end
 
 	nuspec :spec, :package_id  do |nuspec, args|
 	   nuspec.id = args.package_id
@@ -129,7 +140,8 @@ namespace :publish do
 	   nuspec.working_directory = "nuget"
 	   nuspec.output_file = "#{args.package_id}.#{version}.nuspec"
 	   nuspec.tags = "patterns enumerable extensions"
-	   nuspec.dependency "castle.core", "2.5.1"
+	   nuspec.dependency "castle.core", "2.5.1" unless args.package_id == "*WPF"
+	   nuspec.dependency "MavenThought.commons", "0.9.5" unless args.package_id == "*WPF"
 	end
 	
 	nugetpack :package, :package_id do |p, args|
