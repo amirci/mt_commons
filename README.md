@@ -11,9 +11,9 @@ I’ve been used these classes for quite a while and decided then that it was ti
 
 ## Documentation
 
-* [[Extensions to Dates|Extensions-to-dates]]
+* [Dates utilities and extensions](https://github.com/amirci/mt_commons/wiki/Extensions-To-Dates)
 
-* [[Extensions to Enumerable|Extensions-to-enumerable]]
+* [Enumerable extensions](https://github.com/amirci/mt_commons/wiki/Extensions-to-enumerable)
 
-* [[Extensions to Numbers|Extension-To-Integers]]
+* [Numbers extensions](https://github.com/amirci/mt_commons/wiki/Extension-To-Integers)
 
