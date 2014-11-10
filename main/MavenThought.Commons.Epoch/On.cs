@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MavenThought.Commons.Extensions
+namespace MavenThought.Commons.Epoch
 {
     public static class On
     {

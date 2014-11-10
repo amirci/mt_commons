@@ -7,7 +7,7 @@ module ``Date range tests`` =
     open FsCheck
     open FsCheck.NUnit
     open System.Linq
-    open MavenThought.Commons
+    open MavenThought.Commons.Epoch
 
     let mkRange (sd:DateTime) (ed: DateTime) = DateRange(sd, ed)
 
@@ -31,8 +31,8 @@ module ``Date range tests`` =
             let notInc () = (mkRange startDate endDate).NotInclusive
             (endDate > startDate) ==> lazy (notInc().EndDate = endDate.Date.AddDays(-1.0))
 
-    module ``#Includes method`` =
 
+    module ``#Includes method`` =
         module ``When the date is part of the range`` =
             [<Property>]
             let ``Returns the date is included`` (sd:DateTime) (ed: DateTime) (aDate: DateTime) =

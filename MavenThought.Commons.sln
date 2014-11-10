@@ -20,8 +20,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MavenThought.Commons.WPF.DummyData", "test\MavenThought.Commons.WPF.DummyData\MavenThought.Commons.WPF.DummyData.csproj", "{00D9152A-8DD5-4D57-BCC8-0DEF815790BC}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MavenThought.Commons.FSharp.Tests", "test\MavenThought.Commons.FSharp.Tests\MavenThought.Commons.FSharp.Tests.fsproj", "{2767BD16-260C-46E4-B60D-C7E2E9EAA01C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{371A231F-741E-4482-81DF-856245FC9BC2}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
@@ -34,12 +32,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildTools", "BuildTools", 
 		BuildTools\build.fsx = BuildTools\build.fsx
 		BuildTools\config.fsx = BuildTools\config.fsx
 		BuildTools\deploy.fsx = BuildTools\deploy.fsx
-		BuildTools\migrations.fsx = BuildTools\migrations.fsx
 		Rakefile.rb = Rakefile.rb
 		BuildTools\test.fsx = BuildTools\test.fsx
 		BuildTools\userInput.fsx = BuildTools\userInput.fsx
 		BuildTools\version.fsx = BuildTools\version.fsx
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MavenThought.Commons.Epoch", "main\MavenThought.Commons.Epoch\MavenThought.Commons.Epoch.csproj", "{35E0EF69-1292-40EC-812D-18285F50FF97}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MavenThought.Commons.Epoch.Tests", "test\MavenThought.Commons.Epoch.Tests\MavenThought.Commons.Epoch.Tests.fsproj", "{2767BD16-260C-46E4-B60D-C7E2E9EAA01C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +68,10 @@ Global
 		{00D9152A-8DD5-4D57-BCC8-0DEF815790BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00D9152A-8DD5-4D57-BCC8-0DEF815790BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00D9152A-8DD5-4D57-BCC8-0DEF815790BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35E0EF69-1292-40EC-812D-18285F50FF97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35E0EF69-1292-40EC-812D-18285F50FF97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35E0EF69-1292-40EC-812D-18285F50FF97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35E0EF69-1292-40EC-812D-18285F50FF97}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2767BD16-260C-46E4-B60D-C7E2E9EAA01C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2767BD16-260C-46E4-B60D-C7E2E9EAA01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2767BD16-260C-46E4-B60D-C7E2E9EAA01C}.Release|Any CPU.ActiveCfg = Release|Any CPU

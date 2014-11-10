@@ -33,6 +33,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -74,7 +75,6 @@
     </Compile>
     <Compile Include="Collections\IMultiDictionary.cs" />
     <Compile Include="Collections\MultiDictionary.cs" />
-    <Compile Include="DateRange.cs" />
     <Compile Include="Delegates\Action.Bind.cs">
       <DependentUpon>Action.cs</DependentUpon>
     </Compile>
@@ -86,8 +86,6 @@
     </Compile>
     <Compile Include="Delegates\Predicate.cs" />
     <Compile Include="Extensions\Conditionals.cs" />
-    <Compile Include="Extensions\DatesExtensions.cs" />
-    <Compile Include="Extensions\On.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

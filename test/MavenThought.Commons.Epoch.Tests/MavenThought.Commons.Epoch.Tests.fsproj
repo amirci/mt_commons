@@ -60,11 +60,11 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="app.config" />
+    <Compile Include="SpanCreationTests.fs" />
     <Compile Include="DateRangeTests.fs" />
     <Compile Include="FsCheckAddin.fs" />
-    <Compile Include="Extensions\DateExtensionsTests.fs" />
-    <Compile Include="Extensions\DateCreationTests.fs" />
-    <Compile Include="Events\PropertyChangedNotificationTests.fs" />
+    <Compile Include="DateExtensionsTests.fs" />
+    <Compile Include="DateCreationTests.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Foq">
@@ -104,9 +104,11 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
-    <ProjectReference Include="..\..\main\MavenThought.Commons\MavenThought.Commons.csproj">
-      <Name>MavenThought.Commons</Name>
-      <Project>{4ccea239-252a-49d8-8bc0-2673aee5fde6}</Project>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\main\MavenThought.Commons.Epoch\MavenThought.Commons.Epoch.csproj">
+      <Name>MavenThought.Commons.Epoch</Name>
+      <Project>{35e0ef69-1292-40ec-812d-18285f50ff97}</Project>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>

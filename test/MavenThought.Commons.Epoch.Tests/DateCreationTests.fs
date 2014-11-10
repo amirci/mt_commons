@@ -2,11 +2,11 @@ namespace MavenThought.Commons.Tests
 
 module ``Date Creation Tests Using On Month`` =
 
+    open System
     open NUnit.Framework
     open FsCheck
     open FsCheck.NUnit
-    open MavenThought.Commons.Extensions 
-    open System
+    open MavenThought.Commons.Epoch 
 
     [<AutoOpen>]
     module Config =

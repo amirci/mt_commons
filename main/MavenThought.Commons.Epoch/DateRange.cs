@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace MavenThought.Commons
+namespace MavenThought.Commons.Epoch
 {
     public class DateRange : IEnumerable<DateTime>, IEquatable<DateRange>
     {
@@ -27,6 +28,10 @@ namespace MavenThought.Commons
 
         public bool Includes(DateTime date)
         {
+            var range = new DateRange(On.Sep(1), 2.Months().Span);
+                
+            var allStrings = range.Select(d => String.Format("The date is {0}", d));
+            
             return this.StartDate <= date && date <= this.EndDate;
         }
 

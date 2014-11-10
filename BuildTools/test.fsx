@@ -7,7 +7,7 @@ open Fake
 open Config
 open System.Configuration
 
-let allTests = Map["CommonsF", "MavenThought.Commons.FSharp.Tests"; 
+let allTests = Map["CommonsF", "MavenThought.Commons.Epoch.Tests"; 
     "Commons", "MavenThought.Commons.Tests";
     "Commons.WPF", "MavenThought.Commons.Wpf.Tests";
     ]
