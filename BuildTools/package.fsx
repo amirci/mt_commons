@@ -33,7 +33,7 @@ module Package =
                 OutputPath = "."
                 Summary = "Set of classes and extensions that make date creation much easier and clear"
                 WorkingDir = packagingDir
-                Version = "1.0.0.0"
+                Version = "1.0.2.0"
                 Publish = true }) 
                 "template.nuspec"
     )
