@@ -11,6 +11,25 @@ module ``Date range tests`` =
 
     let mkRange (sd:DateTime) (ed: DateTime) = DateRange(sd, ed)
 
+    module ``Constructor using dates`` =
+
+        [<Property>]
+        let ``Creates a date range with start and end`` (sd:DateTime) (ed: DateTime) =
+            (ed > sd) ==> lazy (
+                let range = mkRange sd ed
+                range.StartDate = sd.Date && range.EndDate = ed.Date
+            )
+
+    module ``Constructor using span`` =
+
+        [<Property>]
+        let ``Creates a date range with the specified span`` (sd:DateTime) (span: int) =
+            (span > 1) ==> lazy (
+                let range = DateRange(sd, span .Days().Span)
+                range.StartDate = sd.Date && range.EndDate = (sd.Date + TimeSpan(span, 0, 0, 0))
+            )
+
+        
     module ``#GetEnumerator method`` =
         let rec allDatesBetween (startDate:DateTime) (endDate:DateTime) = seq { 
             if startDate.Date <= endDate.Date then

@@ -115,7 +115,7 @@ namespace MavenThought.Commons.Epoch
             get { return _adjustFunc(DateTime.Today, _number); }
         }
 
-        public static explicit operator TimeSpan(DateTimeBuilder builder)
+        public static implicit operator TimeSpan(DateTimeBuilder builder)
         {
             return builder.Span;
         }
