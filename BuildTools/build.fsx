@@ -9,7 +9,7 @@ RestorePackages()
 
 #load "./config.fsx"
 #load "./userInput.fsx"
-#load "./deploy.fsx"
+#load "./package.fsx"
 #load "./version.fsx"
 #load "./Test.fsx"
 

@@ -1,1 +1,1 @@
-[[include:https://github.com/amirci/mt_commons/wiki]]
+Read the [[wiki:https://github.com/amirci/mt_commons/wiki]] for more information.

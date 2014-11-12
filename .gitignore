@@ -18,3 +18,5 @@ pkg
 *.gemspec
 
 test/TestResults.xml
+packaging/
+*nupkg
