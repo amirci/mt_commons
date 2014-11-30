@@ -107,12 +107,12 @@ namespace MavenThought.Commons.Epoch
 
         public DateTime Ago
         {
-            get { return _adjustFunc(DateTime.Today, -_number); }
+            get { return _adjustFunc(DateTime.Now, -_number); }
         }
 
         public DateTime FromNow
         {
-            get { return _adjustFunc(DateTime.Today, _number); }
+            get { return _adjustFunc(DateTime.Now, _number); }
         }
 
         public static implicit operator TimeSpan(DateTimeBuilder builder)
@@ -122,7 +122,7 @@ namespace MavenThought.Commons.Epoch
 
         public TimeSpan Span
         {
-            get { return FromNow - DateTime.Today; }
+            get { return FromNow - DateTime.Now; }
         }
     }
 }
