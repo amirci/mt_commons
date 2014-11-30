@@ -10,6 +10,7 @@ open Microsoft.FSharp.Reflection
 
 open Config
 
+[<AutoOpen>]
 module Version =
 
     let private unionToString (x:'a) = 
@@ -23,6 +24,8 @@ module Version =
         | Build
 
     let private versionFile = "main/VERSION"
+
+    let Current = ReadLine versionFile
 
     type VersionNumber(version:string) =
         let major, minor, revision, build = 
@@ -45,8 +48,6 @@ module Version =
             newVersion.Save()
             newVersion
 
-
-    let Current = ReadLine versionFile
 
     let private attributes =
             [Attribute.Company "MavenThought Inc."

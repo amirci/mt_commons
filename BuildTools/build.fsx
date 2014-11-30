@@ -9,8 +9,8 @@ RestorePackages()
 
 #load "./config.fsx"
 #load "./userInput.fsx"
-#load "./package.fsx"
 #load "./version.fsx"
+#load "./package.fsx"
 #load "./Test.fsx"
 
 open Config
