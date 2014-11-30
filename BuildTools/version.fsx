@@ -12,7 +12,7 @@ open Config
 
 module Version =
 
-    let unionToString (x:'a) = 
+    let private unionToString (x:'a) = 
         match FSharpValue.GetUnionFields(x, typeof<'a>) with
         | case, _ -> case.Name
 
@@ -22,6 +22,8 @@ module Version =
         | Revision
         | Build
 
+    let private versionFile = "main/VERSION"
+
     type VersionNumber(version:string) =
         let major, minor, revision, build = 
             match version.Split '.' |> Array.map Int32.Parse  with
@@ -30,7 +32,7 @@ module Version =
 
         override this.ToString () = sprintf "%d.%d.%d.%d" major minor revision build
         
-        member this.Save () = WriteFile "VERSION" [this.ToString()]
+        member this.Save () = WriteFile versionFile [this.ToString()]
 
         member this.Bump part =
             let ma, mi, re, b = match part with
@@ -44,24 +46,24 @@ module Version =
             newVersion
 
 
-    let version = ReadLine "VERSION"
+    let Current = ReadLine versionFile
 
-    let attributes =
+    let private attributes =
             [Attribute.Company "MavenThought Inc."
              Attribute.Product "Commons is a library with helper methods and utilities"
              Attribute.Copyright "MavenThought Inc."
              Attribute.Trademark "MavenThought Inc."
              Attribute.ComVisible false
-             Attribute.Version version
-             Attribute.FileVersion version
+             Attribute.Version Current
+             Attribute.FileVersion Current
             ]
 
 
-    let printVersion (versionNumber:VersionNumber) =
+    let private printVersion (versionNumber:VersionNumber) =
         printfn "Current Version: %O" versionNumber
     
     Target "Version" (fun _ ->
-        printVersion (VersionNumber (version))
+        printVersion (VersionNumber (Current))
     )
 
     Target "Version:Set" (fun _ ->

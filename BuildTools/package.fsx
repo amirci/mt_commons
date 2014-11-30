@@ -2,11 +2,13 @@
 
 #load "./config.fsx"
 #load "./userInput.fsx"
+#load "./version.fsx"
 
 open Fake
-open Config
-open System
 open Fake.FileSystem
+
+open Config
+open Version
 
 module Package =
 
@@ -33,7 +35,7 @@ module Package =
                 OutputPath = "."
                 Summary = "Set of classes and extensions that make date creation much easier and clear"
                 WorkingDir = packagingDir
-                Version = "1.0.2.0"
+                Version = Version.Current
                 Publish = true }) 
                 "template.nuspec"
     )

@@ -11,51 +11,51 @@ module ``Date extensions tests`` =
 
         [<Property>]
         let ``Returns the seconds ago`` (some:int) =
-            some > 0 ==> (some .Seconds().Ago = (DateTime.Today.AddSeconds(-float(some))))
+            some > 0 ==> (some .Seconds().Ago = (DateTime.Now.AddSeconds(-float(some))))
 
         [<Property>]
         let ``Returns the minutes ago`` (some:int) =
-            some > 0 ==> (some .Minutes().Ago = (DateTime.Today.AddMinutes(-float(some))))
+            some > 0 ==> (some .Minutes().Ago = (DateTime.Now.AddMinutes(-float(some))))
 
         [<Property>]
         let ``Returns the days ago`` (some:int) =
-            some > 0 ==> (some .Days().Ago = (DateTime.Today.AddDays(-float(some))))
+            some > 0 ==> (some .Days().Ago = (DateTime.Now.AddDays(-float(some))))
 
         [<Property>]
         let ``Returns the years ago`` (some:int) =
-            some > 0 ==> (some .Years().Ago = (DateTime.Today.AddYears(-some)))
+            some > 0 ==> (some .Years().Ago.Date = (DateTime.Now.AddYears(-some)).Date)
 
         [<Property>]
         let ``Returns the months ago`` (some:int) =
-            some > 0 ==> (some .Months().Ago = (DateTime.Today.AddMonths(-some)))
+            some > 0 ==> (some .Months().Ago.Date = (DateTime.Now.AddMonths(-some)).Date)
 
         [<Property>]
         let ``Returns the weeks ago`` (some:int) =
-            some > 0 ==> (some .Weeks().Ago = (DateTime.Today.AddDays(-float(some*7))))
+            some > 0 ==> (some .Weeks().Ago = (DateTime.Now.AddDays(-float(some*7))))
 
     module ``Some time FromNow extensions`` =
         [<Property>]
         let ``Returns the seconds from now`` (some:int) =
-            some > 0 ==> (some .Seconds().FromNow = (DateTime.Today.AddSeconds(float(some))))
+            some > 0 ==> (some .Seconds().FromNow = (DateTime.Now.AddSeconds(float(some))))
 
         [<Property>]
         let ``Returns the minutes from now`` (some:int) =
-            some > 0 ==> (some .Minutes().FromNow = (DateTime.Today.AddMinutes(float(some))))
+            some > 0 ==> (some .Minutes().FromNow = (DateTime.Now.AddMinutes(float(some))))
 
         [<Property>]
         let ``Returns the days from now`` (some:int) =
-            some > 0 ==> (some .Days().FromNow = (DateTime.Today.AddDays(float(some))))
+            some > 0 ==> (some .Days().FromNow = (DateTime.Now.AddDays(float(some))))
 
         [<Property>]
         let ``Returns the years from now`` (some:int) =
-            some > 0 ==> (some .Years().FromNow = (DateTime.Today.AddYears(some)))
+            some > 0 ==> (some .Years().FromNow.Date = (DateTime.Now.AddYears(some)).Date)
 
         [<Property>]
         let ``Returns the months from now`` (some:int) =
-            some > 0 ==> (some .Months().FromNow = (DateTime.Today.AddMonths(some)))
+            some > 0 ==> (some .Months().FromNow = (DateTime.Now.AddMonths(some)))
 
         [<Property>]
         let ``Returns the weeks from now`` (some:int) =
-            some > 0 ==> (some .Weeks().FromNow = (DateTime.Today.AddDays(float(some*7))))
+            some > 0 ==> (some .Weeks().FromNow = (DateTime.Now.AddDays(float(some*7))))
 
 
